@@ -3,7 +3,7 @@ imports:
 
 twig:
     globals:
-        bigfoot_version: '3.0'
+        bigfoot_version: '4.0'
         defaultLocale: %locale%
 
 bigfoot_core:

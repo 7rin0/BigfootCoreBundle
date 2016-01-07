@@ -179,7 +179,7 @@ services:
         class: Bigfoot\Bundle\CoreBundle\Form\QuickLinkType
         arguments: ["@request"]
         calls:
-            - [setSecurityContext, ["@security.context"]]
+            - [setSecurityContext, ["@security.authorization_checker"]]
         scope: request
         tags:
             - { name: form.type, alias: bigfoot_bundle_corebundle_quicklinktype }
@@ -229,8 +229,8 @@ services:
     bigfoot_core.menu_builder:
         class: Bigfoot\Bundle\CoreBundle\Menu\Builder
         arguments:
-            - "@doctrine.orm.entity_manager"
-            - "@security.context"
+            - "@doctrine.orm.entity_manager.abstract"
+            - "@security.authorization_checker"
             - "@event_dispatcher"
             - "@bigfoot_core.manager.menu"
 
@@ -240,7 +240,7 @@ services:
         arguments:
             - "@knp_menu.factory"
             - "@doctrine.orm.entity_manager"
-            - "@security.context"
+            - "@security.authorization_checker"
 
     # Menu main
     bigfoot_core.menu.main:
@@ -267,7 +267,7 @@ services:
     # Menu Subscriber
     bigfoot_core.subscriber.menu:
         class: Bigfoot\Bundle\CoreBundle\Subscriber\MenuSubscriber
-        arguments: ["@security.context"]
+        arguments: ["@security.authorization_checker"]
         tags:
             - { name: kernel.event_subscriber }
 
@@ -325,13 +325,13 @@ services:
             - "@annotation_reader"
             - "@property_accessor"
 
-    # Chain Router
-#    bigfoot_core.cmf_routing.router:
-#        class: Symfony\Cmf\Component\Routing\ChainRouter
-#        arguments:
-#            - "@logger"
-#        calls:
-#            - [setContext, ['@router.request_context']]
+#    Chain Router
+    bigfoot_core.cmf_routing.router:
+        class: Symfony\Component\Routing\Router
+        arguments:
+            - "@logger"
+        calls:
+            - [setContext, ['@router.request_context']]
 
     # Bigfoot Router
     bigfoot_core.router:
