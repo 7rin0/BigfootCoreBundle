@@ -89,7 +89,7 @@ services:
     # Tags management
     bigfoot.form.type.bigfoot_tag:
         class: Bigfoot\Bundle\CoreBundle\Form\Type\BigfootTagType
-        arguments: ["@doctrine.orm.entity_manager.abstract"]
+        arguments: ["@doctrine.orm.entity_manager"]
         tags:
             - { name: form.type, alias: bigfoot_tag }
     # Entity translation in forms
@@ -98,19 +98,19 @@ services:
         scope: request
         arguments:
             - "@bigfoot_core.translatable_subscriber"
-            - "@request"
+            - "@request_stack"
             - %bigfoot_core.languages.front%
         tags:
             - { name: form.type, alias: translatable_entity }
     # Translatable label
     form.type.translatable_label:
         class: Bigfoot\Bundle\CoreBundle\Form\TranslatableLabelType
-        arguments: ["@bigfoot_context", "@doctrine.orm.entity_manager.abstract", %locale%, "@bigfoot_core.manager.translatable_label", "@translator"]
+        arguments: ["@bigfoot_context", "@doctrine.orm.entity_manager", %locale%, "@bigfoot_core.manager.translatable_label", "@translator"]
         tags:
             - { name: form.type, alias: bigfoot_bundle_corebundle_translatable_labeltype }
     form.type.translatable_label_translation:
         class: Bigfoot\Bundle\CoreBundle\Form\TranslatableLabelTranslationType
-        arguments: ["@bigfoot_context", "@doctrine.orm.entity_manager.abstract", %locale%, "@bigfoot_core.manager.translatable_label", "@translator"]
+        arguments: ["@bigfoot_context", "@doctrine.orm.entity_manager", %locale%, "@bigfoot_core.manager.translatable_label", "@translator"]
         tags:
             - { name: form.type, alias: bigfoot_bundle_corebundle_translatable_label_translationtype }
     # CRUD
@@ -171,13 +171,13 @@ services:
     # Allows translations to be stored in database
     bigfoot.translation.database_loader:
         class: Bigfoot\Bundle\CoreBundle\Translation\DatabaseLoader
-        arguments: ["@doctrine.orm.entity_manager.abstract"]
+        arguments: ["@doctrine.orm.entity_manager"]
         tags:
             - { name: translation.loader, alias: db }
     # QuickLink type
     bigfoot.form.type.quicklink:
         class: Bigfoot\Bundle\CoreBundle\Form\QuickLinkType
-        arguments: ["@request"]
+        arguments: ["@request_stack"]
         calls:
             - [setSecurityContext, ["@security.authorization_checker"]]
         scope: request
@@ -219,7 +219,7 @@ services:
         class: Bigfoot\Bundle\CoreBundle\Mailer\AbstractMailer
         abstract: true
         calls:
-            - [setManager, ['@doctrine.orm.entity_manager.abstract']]
+            - [setManager, ['@doctrine.orm.entity_manager']]
             - [setMailer, ['@mailer']]
             - [setTemplating, ['@templating']]
             - [setTranslator, ['@translator']]
@@ -229,7 +229,7 @@ services:
     bigfoot_core.menu_builder:
         class: Bigfoot\Bundle\CoreBundle\Menu\Builder
         arguments:
-            - "@doctrine.orm.entity_manager.abstract"
+            - "@doctrine.orm.entity_manager"
             - "@security.authorization_checker"
             - "@event_dispatcher"
             - "@bigfoot_core.manager.menu"
@@ -239,7 +239,7 @@ services:
         class: Bigfoot\Bundle\CoreBundle\Menu\MenuManager
         arguments:
             - "@knp_menu.factory"
-            - "@doctrine.orm.entity_manager.abstract"
+            - "@doctrine.orm.entity_manager"
             - "@security.authorization_checker"
 
     # Menu main
@@ -249,7 +249,7 @@ services:
         factory_method: createMainMenu
         scope: request
         arguments:
-            - "@request"
+            - "@request_stack"
         tags:
             - { name: knp_menu.menu, alias: main }
 
@@ -260,7 +260,7 @@ services:
         factory_method: createTestMenu
         scope: request
         arguments:
-            - "@request"
+            - "@request_stack"
         tags:
             - { name: knp_menu.menu, alias: test }
 
@@ -285,9 +285,9 @@ services:
         scope: request
         arguments:
             - "@form.factory"
-            - "@doctrine.orm.entity_manager.abstract"
+            - "@doctrine.orm.entity_manager"
             - "@session"
-            - "@request"
+            - "@request_stack"
 
     bigfoot_core.form.type.filters:
         class: Bigfoot\Bundle\CoreBundle\Form\Type\FilterType
@@ -301,7 +301,7 @@ services:
     bigfoot_core.manager.settings:
         class: Bigfoot\Bundle\CoreBundle\Manager\SettingsManager
         arguments:
-            - "@doctrine.orm.entity_manager.abstract"
+            - "@doctrine.orm.entity_manager"
 
     bigfoot_core.form.type.settings:
         class: Bigfoot\Bundle\CoreBundle\Form\Type\SettingsType
@@ -321,7 +321,7 @@ services:
     bigfoot_core.translation.repository:
         class: %bigfoot.core.translation.repository.class%
         arguments:
-            - "@doctrine.orm.entity_manager.abstract"
+            - "@doctrine.orm.entity_manager"
             - "@annotation_reader"
             - "@property_accessor"
 
@@ -359,4 +359,4 @@ services:
     bigfoot_core.manager.csv:
         class: Bigfoot\Bundle\CoreBundle\Manager\CsvManager
         arguments:
-            - "@doctrine.orm.entity_manager.abstract"
+            - "@doctrine.orm.entity_manager"
