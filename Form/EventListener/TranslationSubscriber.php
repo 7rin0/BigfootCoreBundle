@@ -3,13 +3,11 @@
 namespace Bigfoot\Bundle\CoreBundle\Form\EventListener;
 
 use Bigfoot\Bundle\ContextBundle\Service\ContextService;
-use Doctrine\Common\Annotations\Reader;
-use Gedmo\Translatable\Entity\Repository\TranslationRepository;
 use Bigfoot\Bundle\CoreBundle\Entity\TranslationRepository as BigfootTranslationRepository;
+use Doctrine\Common\Annotations\Reader;
 use Gedmo\Translatable\TranslatableListener;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\PropertyAccess\PropertyAccess;

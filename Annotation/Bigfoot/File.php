@@ -30,5 +30,4 @@ class File
         return $this->filePathProperty;
     }
 
-
 }

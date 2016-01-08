@@ -2992,7 +2992,6 @@ jQuery.text = Sizzle.getText;
 jQuery.isXMLDoc = Sizzle.isXML;
 jQuery.contains = Sizzle.contains;
 
-
 })( window );
 // String to Object options format cache
 var optionsCache = {};
@@ -4629,7 +4628,6 @@ if ( !getSetAttribute ) {
 		};
 	});
 }
-
 
 // Some attributes require a special call on IE
 // http://msdn.microsoft.com/en-us/library/ms536429%28VS.85%29.aspx
@@ -9139,7 +9137,6 @@ function defaultPrefilter( elem, props, opts ) {
 		}
 	}
 
-
 	// show/hide pass
 	for ( prop in props ) {
 		value = props[ prop ];
@@ -9637,7 +9634,6 @@ jQuery.offset = {
 	}
 };
 
-
 jQuery.fn.extend({
 
 	position: function() {
@@ -9687,7 +9683,6 @@ jQuery.fn.extend({
 		});
 	}
 });
-
 
 // Create scrollLeft and scrollTop methods
 jQuery.each( {scrollLeft: "pageXOffset", scrollTop: "pageYOffset"}, function( method, prop ) {

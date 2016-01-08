@@ -15,7 +15,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-
 (function() {
   var $, BorderDropHint, DragAndDropHandler, DragElement, FolderElement, GhostDropHint, JqTreeWidget, MouseWidget, Node, NodeElement, Position, SaveStateHandler, ScrollHandler, SelectNodeHandler, SimpleWidget, html_escape, indexOf, json_escapable, json_meta, json_quote, json_str, _indexOf, _ref, _ref1, _ref2,
     __slice = [].slice,
@@ -123,7 +122,6 @@ limitations under the License.
   /*
   This widget does the same a the mouse widget in jqueryui.
   */
-
 
   MouseWidget = (function(_super) {
     __extends(MouseWidget, _super);
@@ -260,7 +258,6 @@ limitations under the License.
   See the License for the specific language governing permissions and
   limitations under the License.
   */
-
 
   this.Tree = {};
 
@@ -475,7 +472,6 @@ limitations under the License.
     ]
     */
 
-
     Node.prototype.loadFromData = function(data) {
       var node, o, _i, _len;
 
@@ -499,7 +495,6 @@ limitations under the License.
     );
     */
 
-
     Node.prototype.addChild = function(node) {
       this.children.push(node);
       return node._setParent(this);
@@ -513,7 +508,6 @@ limitations under the License.
         1
     );
     */
-
 
     Node.prototype.addChildAtPosition = function(node, index) {
       this.children.splice(index, 0, node);
@@ -532,7 +526,6 @@ limitations under the License.
     tree.removeChild(tree.children[0]);
     */
 
-
     Node.prototype.removeChild = function(node) {
       node.removeChildren();
       return this._removeChild(node);
@@ -549,7 +542,6 @@ limitations under the License.
     var index = getChildIndex(node);
     */
 
-
     Node.prototype.getChildIndex = function(node) {
       return $.inArray(node, this.children);
     };
@@ -561,7 +553,6 @@ limitations under the License.
         //
     }
     */
-
 
     Node.prototype.hasChildren = function() {
       return this.children.length !== 0;
@@ -587,7 +578,6 @@ limitations under the License.
         }
     );
     */
-
 
     Node.prototype.iterate = function(callback) {
       var _iterate,
@@ -621,7 +611,6 @@ limitations under the License.
     tree.moveNode(node1, node2, Position.AFTER);
     */
 
-
     Node.prototype.moveNode = function(moved_node, target_node, position) {
       if (moved_node.isParentOf(target_node)) {
         return;
@@ -639,7 +628,6 @@ limitations under the License.
     /*
     Get the tree as data.
     */
-
 
     Node.prototype.getData = function() {
       var getDataFromNodes,

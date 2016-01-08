@@ -2,13 +2,10 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Listener;
 
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Doctrine\ORM\Event\LifecycleEventArgs;
-use Doctrine\Common\EventArgs;
-use Doctrine\Common\Annotations\AnnotationReader;
 use Bigfoot\Bundle\CoreBundle\Manager\FileManager;
-
-use Doctrine\ORM\EntityManager;
+use Doctrine\Common\Annotations\AnnotationReader;
+use Doctrine\Common\EventArgs;
+use Doctrine\ORM\Event\LifecycleEventArgs;
 
 /**
  * Class FileUploadListener

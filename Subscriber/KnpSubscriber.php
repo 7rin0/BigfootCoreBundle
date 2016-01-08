@@ -2,9 +2,8 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Subscriber;
 
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\PropertyAccess\PropertyAccess;
 use Knp\Component\Pager\Event\ItemsEvent;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class KnpSubscriber implements EventSubscriberInterface
 {

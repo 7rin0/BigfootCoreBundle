@@ -3,11 +3,10 @@
 namespace Bigfoot\Bundle\CoreBundle\Menu;
 
 use Bigfoot\Bundle\UserBundle\Entity\Role;
-use Symfony\Component\Security\Core\SecurityContext;
-
+use Bigfoot\Bundle\UserBundle\Entity\RoleMenu;
 use Doctrine\ORM\EntityManager;
 use Knp\Menu\FactoryInterface;
-use Bigfoot\Bundle\UserBundle\Entity\RoleMenu;
+use Symfony\Component\Security\Core\SecurityContext;
 
 /**
  * Menu Manager
@@ -264,7 +263,6 @@ class MenuManager
                 $this->createChild($child, $node->children);
             }
         }
-
 
         return $this;
     }

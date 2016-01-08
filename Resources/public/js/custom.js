@@ -9,7 +9,6 @@ $(document).ready(function () {
         }
     });
 
-
     $("#nav > li > a").on('click', function (e) {
         if ($(this).parent().hasClass("has_sub")) {
             e.preventDefault();
@@ -29,7 +28,6 @@ $(document).ready(function () {
         }
 
     });
-
 
     $("#nav > li > ul > li > a").on('click', function (e) {
         if ($(this).parent().hasClass("has_sub")) {

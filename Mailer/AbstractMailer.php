@@ -2,8 +2,8 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Mailer;
 
-use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Doctrine\ORM\EntityManager;
+use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
 abstract class AbstractMailer

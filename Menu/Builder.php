@@ -2,15 +2,12 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Menu;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-use Symfony\Component\Security\Core\SecurityContextInterface;
+use Bigfoot\Bundle\CoreBundle\Event\MenuEvent;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
-use Doctrine\ORM\EntityManager;
-
-use Bigfoot\Bundle\CoreBundle\Event\MenuEvent;
-use Bigfoot\Bundle\CoreBundle\Menu\MenuManager;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\SecurityContextInterface;
 
 /**
  * Menu Builder

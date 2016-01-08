@@ -7,7 +7,6 @@ use Bigfoot\Bundle\CoreBundle\Command\BaseCommand;
 use Bigfoot\Bundle\CoreBundle\Entity\TranslatableLabel;
 use Bigfoot\Bundle\CoreBundle\Entity\TranslatableLabelRepository;
 use Bigfoot\Bundle\CoreBundle\Entity\TranslatableLabelTranslation;
-use Bigfoot\Bundle\CoreBundle\Entity\TranslationRepository;
 use Bigfoot\Bundle\CoreBundle\Manager\TranslatableLabelManager;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Console\Helper\ProgressHelper;

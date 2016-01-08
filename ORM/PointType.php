@@ -2,8 +2,8 @@
 
 namespace Bigfoot\Bundle\CoreBundle\ORM;
 
-use Doctrine\DBAL\Types\Type;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
+use Doctrine\DBAL\Types\Type;
 
 /**
  * Mapping type for spatial POINT objects

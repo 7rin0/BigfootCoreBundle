@@ -8,9 +8,6 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Controller;
 
-
-use Bigfoot\Bundle\CoreBundle\Controller\CrudController;
-
 class WidgetController extends CrudController
 {
 

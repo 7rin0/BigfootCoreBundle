@@ -2,15 +2,12 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Command\Bigfoot;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Bigfoot\Bundle\CoreBundle\Command\BaseCommand;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Finder\Finder;
-
-use Bigfoot\Bundle\CoreBundle\Command\BaseCommand;
 
 /**
  * Runs bigfoot:theme:install and assets:install

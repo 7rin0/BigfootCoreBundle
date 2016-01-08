@@ -2,14 +2,10 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Theme;
 
-use Symfony\Component\DependencyInjection\Container;
-
-use Bigfoot\Bundle\CoreBundle\Theme\Section;
-
-use Assetic\Asset\AssetCache;
-use Assetic\Asset\BaseCache;
-
 use ArrayAccess;
+use Assetic\Asset\BaseCache;
+use Bigfoot\Bundle\CoreBundle\Theme\Section;
+use Symfony\Component\DependencyInjection\Container;
 
 /**
  * The theme service holds data to be used when displaying a page in the Bigfoot back office.

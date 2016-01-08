@@ -4,12 +4,9 @@ namespace Bigfoot\Bundle\CoreBundle\Entity;
 
 use Bigfoot\Bundle\CoreBundle\Exception\InvalidArgumentException;
 use Doctrine\Common\Proxy\Proxy;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Query;
-use Doctrine\ORM\EntityRepository;
-use Gedmo\Translatable\TranslatableListener;
 use Gedmo\Tool\Wrapper\EntityWrapper;
-use Doctrine\Common\Annotations\Reader;
+use Gedmo\Translatable\TranslatableListener;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 

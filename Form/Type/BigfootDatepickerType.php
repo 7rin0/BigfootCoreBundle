@@ -3,7 +3,6 @@
 namespace Bigfoot\Bundle\CoreBundle\Form\Type;
 
 use Bigfoot\Bundle\ContextBundle\Service\ContextService;
-use Bigfoot\Bundle\CoreBundle\Form\DataTransformer\TagsToStringTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 

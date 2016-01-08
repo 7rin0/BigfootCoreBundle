@@ -336,7 +336,6 @@ $.fn.ajaxSubmit = function(options) {
         }
         io = $io[0];
 
-
         xhr = { // mock object
             aborted: 0,
             responseText: null,
@@ -813,7 +812,6 @@ function captureSubmittingElement(e) {
     // clear form vars
     setTimeout(function() { form.clk = form.clk_x = form.clk_y = null; }, 100);
 }
-
 
 // ajaxFormUnbind unbinds the event handlers that were bound by ajaxForm
 $.fn.ajaxFormUnbind = function() {

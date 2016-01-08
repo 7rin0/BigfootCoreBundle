@@ -2,10 +2,7 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Form\Type;
 
-use Bigfoot\Bundle\CoreBundle\Form\DataTransformer\TagsToStringTransformer;
-use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 /**

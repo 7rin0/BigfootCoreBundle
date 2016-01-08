@@ -2,15 +2,8 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Manager;
 
-use Bigfoot\Bundle\CoreBundle\Entity\TranslatableLabelRepository;
-use Doctrine\ORM\QueryBuilder;
-use Symfony\Component\Form\FormFactory;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\HttpFoundation\Request;
-
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Csv manager

@@ -2,15 +2,13 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Command\Bigfoot;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Finder\Finder;
-
 use Bigfoot\Bundle\CoreBundle\Command\BaseCommand;
 use Bigfoot\Bundle\CoreBundle\Util\CommonUtil;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Finder\Finder;
 
 /**
  * Command that places the active bigfoot theme web assets into a given directory.

@@ -2,13 +2,11 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Bigfoot\Bundle\CoreBundle\Entity\Settings;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
-
-use Bigfoot\Bundle\CoreBundle\Entity\Settings;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Settings Controller.

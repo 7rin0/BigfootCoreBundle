@@ -7,8 +7,6 @@ use Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
-use Bigfoot\Bundle\CoreBundle\Command\BaseCommand;
-
 /**
  * Heavily based on \Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand.
  *

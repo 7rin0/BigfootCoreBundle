@@ -42,7 +42,6 @@ class QuickLink
      */
     private $labelLink;
 
-
     /**
      * Get id
      *

@@ -16,7 +16,6 @@
  * limitations under the License.
  * ========================================================== */
 
-
 !function ($) {
 
 	"use strict"; // jshint ;_;
@@ -287,10 +286,8 @@
 				}, 0);
 			}
 
-
 			this.focus();
 		},
-
 
 		destroy: function () {
 			var e = $.Event('destroy');
@@ -316,7 +313,6 @@
 			this.$element.trigger('destroyed');
 		}
 	};
-
 
 	/* MODAL PLUGIN DEFINITION
 	* ======================= */
@@ -353,7 +349,6 @@
 	};
 
 	$.fn.modal.Constructor = Modal;
-
 
 	/* MODAL DATA-API
 	* ============== */

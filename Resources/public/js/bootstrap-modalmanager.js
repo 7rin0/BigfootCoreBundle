@@ -391,7 +391,6 @@
 		}
 	}
 
-
 	/* MODAL MANAGER PLUGIN DEFINITION
 	* ======================= */
 

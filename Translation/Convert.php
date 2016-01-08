@@ -2,9 +2,9 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Translation;
 
-use Symfony\Component\Yaml\Yaml;
-use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Console\Helper\ProgressHelper;
+use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Yaml\Yaml;
 
 /**
  * Gestion des convertions de traductions

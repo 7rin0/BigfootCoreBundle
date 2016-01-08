@@ -2,12 +2,9 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Theme\Section;
 
-use Bigfoot\Bundle\CoreBundle\Theme\Theme;
-
-use Symfony\Component\DependencyInjection\Container;
-
-use Twig_Environment;
 use ArrayAccess;
+use Bigfoot\Bundle\CoreBundle\Theme\Theme;
+use Symfony\Component\DependencyInjection\Container;
 
 /**
  * Holds data to be displayed in the Bigfoot back office.

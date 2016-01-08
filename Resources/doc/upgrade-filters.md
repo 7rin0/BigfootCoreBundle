@@ -94,12 +94,10 @@ choices: array of choices ('value' => 'label')
 
 property: attribute to mapped for filter items
 
-
 ###4.Referer
 
 This type referes to the reference entity.
 You can diplay it on a select field (type: choice) or on an input field (type: text).
-
 
 ```php
 protected function getFilters()
@@ -140,8 +138,6 @@ If you specify nothing or text a input is display.
 ###5.Search
 
 This type can search in an group of fields.
-
-
 
 ```php
 protected function getFilters()

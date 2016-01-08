@@ -181,7 +181,6 @@ form label{
 
 /* Form */
 
-
 form input, form button, form textarea, form select{
     font-size:12px !important;
 }
@@ -323,7 +322,6 @@ form label{
     clear: both;
 }
 
-
 /* Half column */
 
 .mcol-left{
@@ -439,7 +437,6 @@ form label{
     filter:none;
     color: #888;
 }
-
 
 /* Navbar */
 
@@ -779,7 +776,6 @@ header .header-data .hdata em{
     width: 100%;
     padding: 0px !important
 }
-
 
 /* Pagination*/
 
@@ -1166,7 +1162,6 @@ header .header-data .hdata em{
     margin-top: -48px;
     right: 20px;
 }
-
 
 .fc-widget-header {
     padding: 7px 0px !important;

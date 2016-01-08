@@ -3,20 +3,19 @@
 namespace Bigfoot\Bundle\CoreBundle\Controller;
 
 use Bigfoot\Bundle\ContextBundle\Entity\ContextRepository;
-use Doctrine\ORM\Query;
-use Knp\Component\Pager\Paginator;
-use Symfony\Component\Form\Form;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Security\Core\SecurityContext;
-use Symfony\Component\EventDispatcher\EventDispatcher;
-use Symfony\Component\EventDispatcher\GenericEvent;
-use Symfony\Component\Translation\Translator;
+use Bigfoot\Bundle\CoreBundle\Event\FormEvent;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
-
-use Bigfoot\Bundle\CoreBundle\Event\FormEvent;
+use Doctrine\ORM\Query;
+use Knp\Component\Pager\Paginator;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\EventDispatcher\EventDispatcher;
+use Symfony\Component\EventDispatcher\GenericEvent;
+use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Translation\Translator;
 
 /**
  * Base Controller
@@ -174,7 +173,6 @@ class BaseController extends Controller
     {
         return $this->get('router');
     }
-
 
     /**
      * Get Templating

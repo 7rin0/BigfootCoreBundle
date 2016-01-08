@@ -2,9 +2,9 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Theme\Menu;
 
+use Bigfoot\Bundle\UserBundle\Entity\BigfootRoleMenu;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;
-use Bigfoot\Bundle\UserBundle\Entity\BigfootRoleMenu;
 
 /**
  * Represents a group of links to be used to display navigation elements in the BackOffice.

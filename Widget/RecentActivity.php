@@ -9,7 +9,6 @@
 namespace Bigfoot\Bundle\CoreBundle\Widget;
 
 use Bigfoot\Bundle\CoreBundle\Model\AbstractWidget;
-use Symfony\Component\Validator\Constraints\GreaterThan;
 
 class RecentActivity extends AbstractWidget
 {

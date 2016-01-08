@@ -8,7 +8,6 @@
 
 namespace Bigfoot\Bundle\CoreBundle\DataFixtures\ORM;
 
-
 use Bigfoot\Bundle\CoreBundle\Entity\Widget as WidgetBackoffice;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;

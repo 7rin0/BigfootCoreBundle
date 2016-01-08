@@ -3,7 +3,6 @@
 namespace Bigfoot\Bundle\CoreBundle\Entity;
 
 use Bigfoot\Bundle\CoreBundle\Entity\Translation\WidgetTranslation;
-use Bigfoot\Bundle\CoreBundle\WidgetInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;

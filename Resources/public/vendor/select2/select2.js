@@ -840,7 +840,6 @@
                 this.opts.element.blur();
         },
 
-
         // abstract
         enable: function() {
             if (this.enabled) return;
@@ -1147,7 +1146,6 @@
 
                     // ignore a response if the select2 has been closed before it was received
                     if (!self.opened()) return;
-
 
                     self.opts.populateResults.call(this, results, data.results, {term: term, page: page, context:context});
 

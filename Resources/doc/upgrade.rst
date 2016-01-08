@@ -6,7 +6,6 @@ You need to edit the function ""getFIelds" (used to sort lists) in all controlle
 
 Before:
 
-
 ```
 protected function getFields()
 {

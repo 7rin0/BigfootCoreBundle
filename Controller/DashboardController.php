@@ -2,8 +2,8 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Controller;
 
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Doctrine\ORM\Query;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
 class DashboardController
 {

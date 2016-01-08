@@ -2,14 +2,12 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Form\Type;
 
+use Bigfoot\Bundle\CoreBundle\Event\SettingsEvent;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\EventDispatcher\GenericEvent;
-
-use Bigfoot\Bundle\CoreBundle\Event\SettingsEvent;
 
 /**
  * Class SettingsType

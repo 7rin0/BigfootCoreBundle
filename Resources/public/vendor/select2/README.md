@@ -42,7 +42,6 @@ Have a bug? Please create an issue here on GitHub!
 
 https://github.com/ivaynberg/select2/issues
 
-
 Mailing list
 ------------
 
@@ -51,7 +50,6 @@ Have a question? Ask on our mailing list!
 select2@googlegroups.com
 
 https://groups.google.com/d/forum/select2
-
 
 Copyright and License
 ---------------------

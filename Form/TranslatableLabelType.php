@@ -7,10 +7,9 @@ use Bigfoot\Bundle\CoreBundle\Entity\TranslatableLabelTranslation;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\Form\FormView;
 use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use Symfony\Component\Translation\Interval;
 
 /**
  * Class TranslatableLabelType

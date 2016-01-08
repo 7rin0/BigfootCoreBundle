@@ -3,11 +3,11 @@
 namespace Bigfoot\Bundle\CoreBundle\Listener;
 
 use Bigfoot\Bundle\ContextBundle\Service\ContextService;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\HttpKernel\Kernel;
-use Symfony\Component\HttpKernel\HttpKernelInterface;
-use Symfony\Component\Security\Core\SecurityContextInterface;
 use Gedmo\Translatable\TranslatableListener;
+use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\Security\Core\SecurityContextInterface;
 
 /**
  * Class KernelListener
