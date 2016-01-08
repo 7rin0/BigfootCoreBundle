@@ -4,7 +4,7 @@ namespace Bigfoot\Bundle\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use JMS\Serializer\Annotation as Serializer;
+//use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Class Process
@@ -12,7 +12,7 @@ use JMS\Serializer\Annotation as Serializer;
  *
  * @ORM\Table(name="bigfoot_process", indexes={@ORM\Index(name="bigfoot_process_status_index", columns={"status"})})
  * @ORM\Entity(repositoryClass="Bigfoot\Bundle\CoreBundle\Entity\ProcessRepository")
- * @Serializer\AccessType("public_method")
+ * TODO: Serializer\AccessType("public_method")
  */
 class Process
 {
@@ -47,7 +47,7 @@ class Process
      * @var string
      *
      * @ORM\Column(name="current_task", type="string", length=255, nullable=true)
-     * @Serializer\SerializedName("currentTask")
+     * TODO: Serializer\SerializedName("currentTask")
      */
     private $currentTask;
 
@@ -56,7 +56,7 @@ class Process
      *
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="started_at", type="datetime", nullable=true)
-     * @Serializer\SerializedName("startedAt")
+     * TODO: Serializer\SerializedName("startedAt")
      */
     private $startedAt;
 
@@ -64,7 +64,7 @@ class Process
      * @var \DateTime
      *
      * @ORM\Column(name="ended_at", type="datetime", nullable=true)
-     * @Serializer\SerializedName("endedAt")
+     * TODO: Serializer\SerializedName("endedAt")
      */
     private $endedAt;
 
@@ -314,8 +314,8 @@ class Process
 
     /**
      * @return float
-     * @Serializer\VirtualProperty
-     * @Serializer\SerializedName("completionPercentage")
+     * TODO: Serializer\VirtualProperty
+     * TODO: Serializer\SerializedName("completionPercentage")
      */
     public function getCompletionPercentage()
     {
