@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: splancon
- * Date: 21/01/14
- * Time: 18:05
- */
 
 namespace Bigfoot\Bundle\CoreBundle\Widget;
 

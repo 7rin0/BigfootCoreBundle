@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: splancon
- * Date: 21/01/14
- * Time: 12:31
- */
 
 namespace Bigfoot\Bundle\CoreBundle\Controller;
 
