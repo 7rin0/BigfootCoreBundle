@@ -52,7 +52,7 @@ class Theme implements ArrayAccess
         foreach ($sections as $section) {
             $section->setTheme($this);
 
-            $this->sections[$section->getName()] = $section;
+            $this->sections[$section->getBlockPrefix()] = $section;
         }
     }
 

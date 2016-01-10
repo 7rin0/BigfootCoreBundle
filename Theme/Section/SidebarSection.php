@@ -11,7 +11,7 @@ class SidebarSection extends AbstractSection
     /**
      * @return string
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'sidebar';
     }

@@ -15,7 +15,7 @@ class SortableCollectionType extends AbstractType
     /**
      * @return string
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'bigfoot_sortable_collection';
     }

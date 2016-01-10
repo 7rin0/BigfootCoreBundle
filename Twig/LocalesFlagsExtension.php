@@ -2,12 +2,14 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Twig;
 
+use Twig_Extension;
+
 /**
  * Class LocalesFlagsExtension
  *
  * @package Bigfoot\Bundle\CoreBundle\Twig
  */
-class LocalesFlagsExtension extends \Twig_Extension
+class LocalesFlagsExtension extends Twig_Extension
 {
     /** @var \Twig_Environment */
     protected $twig;

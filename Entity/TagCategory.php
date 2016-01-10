@@ -96,7 +96,7 @@ class TagCategory
      *
      * @return string
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return $this->name;
     }

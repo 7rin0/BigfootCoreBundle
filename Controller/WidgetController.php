@@ -11,7 +11,7 @@ namespace Bigfoot\Bundle\CoreBundle\Controller;
 class WidgetController extends CrudController
 {
 
-    public function getName()
+    public function getBlockPrefix()
     {
         return "admin_widget_backoffice";
     }

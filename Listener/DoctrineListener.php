@@ -108,7 +108,7 @@ class DoctrineListener
             foreach ($classAnnotations as $annot) {
                 if ($annot instanceof \Bigfoot\Bundle\CoreBundle\Annotation\Bigfoot\File) {
                     $bigfootFileFields[] = array(
-                        'fileFieldProperty' => $property->getName(),
+                        'fileFieldProperty' => $property->getBlockPrefix(),
                         'filePathProperty' => $annot->getFilePathProperty()
                     );
                 }

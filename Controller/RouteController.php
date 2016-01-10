@@ -17,7 +17,7 @@ class RouteController extends CrudController
     /**
      * @return string
      */
-    protected function getName()
+    protected function getBlockPrefix()
     {
         return 'bigfoot_route';
     }

@@ -163,7 +163,7 @@ EOT
             $labels = $repo->findAll();
             /** @var TranslatableLabel $label */
             foreach ($labels as $label) {
-                $nameDomain = $label->getName().'-'.$label->getDomain();
+                $nameDomain = $label->getBlockPrefix().'-'.$label->getDomain();
                 if (!in_array($nameDomain, $processedLabels)) {
                     $em->remove($label);
                 }

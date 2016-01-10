@@ -3,12 +3,13 @@
 namespace Bigfoot\Bundle\CoreBundle\Twig\Crud;
 
 use Bigfoot\Bundle\CoreBundle\Crud\Formatter\Loader;
+use Twig_Extension;
 
 /**
  * Class FormatterExtension
  * @package Bigfoot\Bundle\CoreBundle\Twig\Crud
  */
-class FormatterExtension extends \Twig_Extension
+class FormatterExtension extends Twig_Extension
 {
     /** @var Loader */
     private $loader;

@@ -42,7 +42,7 @@ class TagType extends AbstractType
     /**
      * @return string
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'bigfoot_bundle_corebundle_tagtype';
     }

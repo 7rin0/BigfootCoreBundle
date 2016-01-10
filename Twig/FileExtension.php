@@ -3,12 +3,13 @@
 namespace Bigfoot\Bundle\CoreBundle\Twig;
 
 use Bigfoot\Bundle\CoreBundle\Manager\FileManager;
+use Twig_Extension;
 
 /**
  * Class FileExtension
  * @package Bigfoot\Bundle\CoreBundle\Twig
  */
-class FileExtension extends \Twig_Extension
+class FileExtension extends Twig_Extension
 {
     /** @var FileManager */
     private $fileManager;

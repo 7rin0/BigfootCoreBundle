@@ -18,7 +18,7 @@ class TagCategoryController extends CrudController
     /**
      * @return string
      */
-    protected function getName()
+    protected function getBlockPrefix()
     {
         return 'admin_tag_category';
     }

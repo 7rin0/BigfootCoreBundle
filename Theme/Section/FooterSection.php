@@ -11,7 +11,7 @@ class FooterSection extends AbstractSection
     /**
      * @return string
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'footer';
     }

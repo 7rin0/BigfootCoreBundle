@@ -168,7 +168,7 @@ class TranslatableLabel
     /**
      * @return string
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return $this->name;
     }
@@ -330,10 +330,10 @@ class TranslatableLabel
      */
     public function getCategory()
     {
-        if (strpos($this->getName(), '.') === false) {
-            return $this->getName();
+        if (strpos($this->getBlockPrefix(), '.') === false) {
+            return $this->getBlockPrefix();
         }
-        return substr($this->getName(), 0, strpos($this->getName(), '.', strpos($this->getName(), '.') + 1));
+        return substr($this->getBlockPrefix(), 0, strpos($this->getBlockPrefix(), '.', strpos($this->getBlockPrefix(), '.') + 1));
     }
 
     /**

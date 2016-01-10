@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 class QuickLinkController extends CrudController
 {
 
-    protected function getName()
+    protected function getBlockPrefix()
     {
         return 'admin_quicklink_form';
     }

@@ -40,7 +40,7 @@ class Menu
     /**
      * @return string The name of the menu.
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return $this->name;
     }
@@ -52,7 +52,7 @@ class Menu
      */
     public function addItem(Item $item)
     {
-        $this->items[$item->getName()] = $item;
+        $this->items[$item->getBlockPrefix()] = $item;
     }
 
     /**
@@ -101,7 +101,7 @@ class Menu
                 $roleForItem = array('ROLE_ADMIN');
 
                 foreach ($entities as $entity) {
-                    if (in_array($item->getName(),$entity->getSlugs())) {
+                    if (in_array($item->getBlockPrefix(),$entity->getSlugs())) {
                         $roleForItem = array_merge(array('ROLE_ADMIN'), array($entity->getRole()));
                     }
                 }

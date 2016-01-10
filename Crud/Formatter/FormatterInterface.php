@@ -14,5 +14,5 @@ interface FormatterInterface
     /**
      * @return string
      */
-    public function getName();
+    public function getBlockPrefix();
 }

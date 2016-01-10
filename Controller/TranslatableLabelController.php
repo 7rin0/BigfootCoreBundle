@@ -19,7 +19,7 @@ class TranslatableLabelController extends CrudController
     /**
      * @return string
      */
-    protected function getName()
+    protected function getBlockPrefix()
     {
         return 'admin_translatable_label';
     }

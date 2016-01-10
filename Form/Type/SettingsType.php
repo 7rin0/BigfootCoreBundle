@@ -60,7 +60,7 @@ class SettingsType extends AbstractType
      *
      * @return string
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'bigfoot_core_settings_type';
     }

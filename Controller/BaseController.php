@@ -267,7 +267,7 @@ class BaseController extends Controller
      */
     protected function getFormErrorsAsArray(Form $form)
     {
-        return array_merge($this->getErrorsArray($form), $this->getErrorsFromSubForm($form, $form->getName()));
+        return array_merge($this->getErrorsArray($form), $this->getErrorsFromSubForm($form, $form->getBlockPrefix()));
     }
 
     /**
@@ -279,7 +279,7 @@ class BaseController extends Controller
     {
         $errors = array();
         foreach ($form->all() as $child) {
-            $errors = array_merge($errors, $this->getErrorsArray($child, $prefix), $this->getErrorsFromSubForm($child, sprintf('%s[%s]', $prefix, $child->getName())));
+            $errors = array_merge($errors, $this->getErrorsArray($child, $prefix), $this->getErrorsFromSubForm($child, sprintf('%s[%s]', $prefix, $child->getBlockPrefix())));
         }
 
         return $errors;
@@ -292,7 +292,7 @@ class BaseController extends Controller
      */
     private function getErrorsArray(Form $form, $namePrefix = '')
     {
-        $formName = $namePrefix ? sprintf('%s[%s]', $namePrefix, $form->getName()) : $form->getName();
+        $formName = $namePrefix ? sprintf('%s[%s]', $namePrefix, $form->getBlockPrefix()) : $form->getBlockPrefix();
 
         $errors = array();
         foreach ($form->getErrors() as $error) {
@@ -300,7 +300,7 @@ class BaseController extends Controller
                 $errors[$formName] = array();
             }
             $errors[$formName][] = array(
-                'field' => $form->getName(),
+                'field' => $form->getBlockPrefix(),
                 'message' => $error->getMessage(),
             );
         }

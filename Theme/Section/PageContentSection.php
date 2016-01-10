@@ -11,7 +11,7 @@ class PageContentSection extends AbstractSection
     /**
      * @return string
      */
-    public function getName()
+    public function getBlockPrefix()
     {
         return 'page_content';
     }

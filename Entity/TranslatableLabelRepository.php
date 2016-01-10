@@ -43,7 +43,7 @@ class TranslatableLabelRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder('e');
 
-        if ('postgresql' == $this->_em->getConnection()->getDriver()->getDatabasePlatform()->getName()) {
+        if ('postgresql' == $this->_em->getConnection()->getDriver()->getDatabasePlatform()->getBlockPrefix()) {
             $qb->select('CONCAT(SUBSTRING_INDEX(e.name, \'.\', 1), \'.\', SUBSTRING_INDEX(e.name, \'.\', 2)) as category');
         } else {
             $qb->select('SUBSTRING_INDEX(SUBSTRING_INDEX(e.name, \'.\', 2), \'.\', -2) as category');
