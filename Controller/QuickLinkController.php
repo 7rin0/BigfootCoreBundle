@@ -95,7 +95,10 @@ class QuickLinkController extends CrudController
      */
     public function quickLinkFormAction()
     {
-        $form   = $this->createForm('bigfoot_bundle_corebundle_quicklinktype', new QuickLink());
+        $form   = $this->createForm(
+            $this->get('bigfoot.form.type.quicklink'),
+            new QuickLink()
+        );
 
         return array(
             'formQuickLink' => $form->createView()

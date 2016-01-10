@@ -34,7 +34,10 @@ class SettingsController extends BaseController
         $settings = $this->getRepository('BigfootCoreBundle:Settings')->findAll();
         $settings = !empty($settings) ? current($settings) : null;
 
-        $form = $this->createForm('bigfoot_core_settings_type', !empty($settings) ? $settings->getSettings() : null);
+        $form = $this->createForm(
+            $this->get('bigfoot_core.form.type.settings'),
+            !empty($settings) ? $settings->getSettings() : null
+        );
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
