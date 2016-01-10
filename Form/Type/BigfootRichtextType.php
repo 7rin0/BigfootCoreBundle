@@ -3,7 +3,7 @@
 namespace Bigfoot\Bundle\CoreBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Extends the TextareaType and adds the ckeditor class attribute.
@@ -14,9 +14,9 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 class BigfootRichtextType extends AbstractType
 {
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
             array(

@@ -4,7 +4,7 @@ namespace Bigfoot\Bundle\CoreBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Class TagCategoryType
@@ -20,7 +20,7 @@ class TagCategoryType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('slug', 'text', array(
+            ->add('slug', TextType::class, array(
                 'required' => false,
             ))
             ->add('translation', 'translatable_entity')
@@ -28,9 +28,9 @@ class TagCategoryType extends AbstractType
     }
 
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'Bigfoot\Bundle\CoreBundle\Entity\TagCategory'

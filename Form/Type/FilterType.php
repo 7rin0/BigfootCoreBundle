@@ -5,7 +5,7 @@ namespace Bigfoot\Bundle\CoreBundle\Form\Type;
 use Bigfoot\Bundle\CoreBundle\Manager\FilterManager;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Class FilterType
@@ -79,7 +79,7 @@ class FilterType extends AbstractType
             if (($filter['type'] == 'referer' && $options['type'] == 'text') || $filter['type'] == 'search') {
                 $builder->add(
                     $filter['name'],
-                    'text',
+                    TextType::class,
                     array(
                         'required' => false,
                         'data'     => $value,
@@ -103,9 +103,9 @@ class FilterType extends AbstractType
     }
 
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
             array(

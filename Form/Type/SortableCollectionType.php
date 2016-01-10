@@ -3,7 +3,7 @@
 namespace Bigfoot\Bundle\CoreBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Helper type allowing sorting of form types in collections.

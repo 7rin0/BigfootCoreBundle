@@ -4,7 +4,7 @@ namespace Bigfoot\Bundle\CoreBundle\Form\Type;
 
 use Bigfoot\Bundle\ContextBundle\Service\ContextService;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Extends the Symfony date type to use a localized date format automatically
@@ -27,9 +27,9 @@ class BigfootDatepickerType extends AbstractType
     }
 
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'widget' => 'single_text',
