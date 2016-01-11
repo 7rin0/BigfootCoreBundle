@@ -40,6 +40,7 @@
                     {% if theme.toolbar.menu is defined and theme.toolbar.menu.items|length and app.security.token %}
                         <ul class="nav pull-right">
                             <li class="dropdown pull-right">
+
                                 <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                     <span class="glyphicon glyphicon-user"></span> {{ app.security.token.user.fullName }} <b class="caret"></b>
                                 </a>
