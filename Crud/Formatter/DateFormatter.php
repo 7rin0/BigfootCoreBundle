@@ -45,7 +45,7 @@ class DateFormatter implements FormatterInterface
     /**
      * @return string
      */
-    public function getBlockPrefix()
+    public function getName()
     {
         return 'date';
     }

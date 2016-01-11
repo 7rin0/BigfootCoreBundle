@@ -47,7 +47,7 @@ class TagsToStringTransformer implements DataTransformerInterface
 
         $arrayTags = array();
         foreach ($tags as $tag) {
-            $arrayTags[] = $tag->getBlockPrefix();
+            $arrayTags[] = $tag->getName();
         }
 
         return implode(self::SEPARATOR, $arrayTags);

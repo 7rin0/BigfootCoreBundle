@@ -11,7 +11,7 @@ class HeaderSection extends AbstractSection
     /**
      * @return string
      */
-    public function getBlockPrefix()
+    public function getName()
     {
         return 'header';
     }

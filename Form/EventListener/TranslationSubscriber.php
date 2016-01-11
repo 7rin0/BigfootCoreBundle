@@ -267,7 +267,7 @@ class TranslationSubscriber implements EventSubscriberInterface
                         $reflectionProperty,
                         'Doctrine\ORM\Mapping\Column'
                     );
-                    $translatableFields[$reflectionProperty->getBlockPrefix()] = $mappingAnnotation->type;
+                    $translatableFields[$reflectionProperty->getName()] = $mappingAnnotation->type;
                 }
             }
         }

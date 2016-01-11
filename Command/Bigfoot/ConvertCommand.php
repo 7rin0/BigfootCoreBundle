@@ -49,7 +49,7 @@ class ConvertCommand extends BaseCommand
                 if ($noVendor && strpos($bundle->getPath(), '/vendor/') !== false) {
                     $deleteBundle = true;
                 // liste de bundles donnée
-                } else if (count($selectedBundles) > 0 && in_array($bundle->getBlockPrefix(), $selectedBundles) == false) {
+                } else if (count($selectedBundles) > 0 && in_array($bundle->getName(), $selectedBundles) == false) {
                     $deleteBundle = true;
                 // liste de namespaces donnée
                 } else if (count($selectedNamespaces) > 0) {
@@ -64,7 +64,7 @@ class ConvertCommand extends BaseCommand
                 }
 
                 if ($deleteBundle) {
-                    unset($bundles[$bundle->getBlockPrefix()]);
+                    unset($bundles[$bundle->getName()]);
                 }
             }
         }

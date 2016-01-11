@@ -11,7 +11,7 @@ class ToolbarSection extends AbstractSection
     /**
      * @return string
      */
-    public function getBlockPrefix()
+    public function getName()
     {
         return 'toolbar';
     }

@@ -69,7 +69,7 @@ class BigfootTagType extends AbstractType
      *
      * @return string The name of this type
      */
-    public function getBlockPrefix()
+    public function getName()
     {
         return 'bigfoot_tag';
     }

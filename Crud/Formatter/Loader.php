@@ -16,7 +16,7 @@ class Loader
      */
     public function addFormatter(FormatterInterface $formatter)
     {
-        $this->formatters[$formatter->getBlockPrefix()] = $formatter;
+        $this->formatters[$formatter->getName()] = $formatter;
     }
 
     /**

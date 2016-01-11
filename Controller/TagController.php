@@ -19,7 +19,7 @@ class TagController extends CrudController
     /**
      * @return string
      */
-    protected function getBlockPrefix()
+    protected function getName()
     {
         return 'admin_tag';
     }
@@ -98,7 +98,7 @@ class TagController extends CrudController
         $tagRepository = $em->getRepository('BigfootCoreBundle:Tag');
         $tagsToJson = array();
         foreach ($tagRepository->findAll() as $tag) {
-            $tagsToJson[] = $tag->getBlockPrefix();
+            $tagsToJson[] = $tag->getName();
         }
 
         return new Response(json_encode($tagsToJson), 200, array('Content-Type', 'application/json'));

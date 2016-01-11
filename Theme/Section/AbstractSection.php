@@ -35,7 +35,7 @@ abstract class AbstractSection implements ArrayAccess
     /**
      * @return string
      */
-    abstract public function getBlockPrefix();
+    abstract public function getName();
 
     /**
      * @return mixed

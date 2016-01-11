@@ -129,7 +129,7 @@ class FilterType extends AbstractType
     /**
      * @return string
      */
-    public function getBlockPrefix()
+    public function getName()
     {
         return 'bigfoot_core_filter_type';
     }

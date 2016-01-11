@@ -76,7 +76,7 @@ class Item
     /**
      * @return string Name of the item. Used as a key in associative arrays.
      */
-    public function getBlockPrefix()
+    public function getName()
     {
         return $this->name;
     }

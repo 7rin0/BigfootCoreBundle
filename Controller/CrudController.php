@@ -13,10 +13,10 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
  * Crud controller.
  *
  * Helper class facilitating the generation of crud controllers.
- * Uses the getBlockPrefix() method to generate route names. Your controller must implement a route named after the
+ * Uses the getName() method to generate route names. Your controller must implement a route named after the
  * controller's name.
  *
- * Routes used by this helper are calculated from its name (self::getBlockPrefix()) suffixed with the action's name.
+ * Routes used by this helper are calculated from its name (self::getName()) suffixed with the action's name.
  * Actions used are :
  * index: name
  * new  : name_new
@@ -41,12 +41,12 @@ abstract class CrudController extends BaseController
     /**
      * Used to generate route names.
      * The helper method of this class will use routes named after this name.
-     * This means if you extend this class and use its helper methods, if getBlockPrefix() returns 'my_controller', you must
+     * This means if you extend this class and use its helper methods, if getName() returns 'my_controller', you must
      * implement a route named 'my_controller'.
      *
      * @return string
      */
-    abstract protected function getBlockPrefix();
+    abstract protected function getName();
 
     /**
      * Must return the entity full name (eg. BigfootCoreBundle:Tag).
@@ -67,7 +67,7 @@ abstract class CrudController extends BaseController
      */
     public function getControllerIndex()
     {
-        return $this->getBlockPrefix();
+        return $this->getName();
     }
 
     /**
@@ -300,10 +300,10 @@ abstract class CrudController extends BaseController
     public function getRouteNameForAction($action)
     {
         if (!$action or $action == 'index') {
-            return $this->getBlockPrefix();
+            return $this->getName();
         }
 
-        return sprintf('%s_%s', $this->getBlockPrefix(), $action);
+        return sprintf('%s_%s', $this->getName(), $action);
     }
 
     /**
@@ -520,7 +520,7 @@ abstract class CrudController extends BaseController
             } else {
                 /** @var Session $session */
                 $session = $this->get('session');
-                $session->set('bigfoot_core.crud.form.'.$this->getBlockPrefix().'.errors', $this->getFormErrorsAsArray($form));
+                $session->set('bigfoot_core.crud.form.'.$this->getName().'.errors', $this->getFormErrorsAsArray($form));
             }
 
             if ($request->isXmlHttpRequest()) {
@@ -585,7 +585,7 @@ abstract class CrudController extends BaseController
             } else {
                 /** @var Session $session */
                 $session = $this->get('session');
-                $session->set('bigfoot_core.crud.form.'.$this->getBlockPrefix().'.errors', $this->getFormErrorsAsArray($form));
+                $session->set('bigfoot_core.crud.form.'.$this->getName().'.errors', $this->getFormErrorsAsArray($form));
             }
 
             if ($request->isXmlHttpRequest()) {
@@ -745,11 +745,11 @@ abstract class CrudController extends BaseController
         foreach ($this->getFields() as $key => $field) {
             if (!is_array($field)) {
                 $fields[$field] = array(
-                    'label' => sprintf('bigfoot_core.crud.fields.%s.%s.label', $this->getBlockPrefix(), $field),
+                    'label' => sprintf('bigfoot_core.crud.fields.%s.%s.label', $this->getName(), $field),
                 );
             } else {
                 if (!isset($field['label'])) {
-                    $field['label'] = sprintf('bigfoot_core.crud.fields.%s.%s.label', $this->getBlockPrefix(), $key);
+                    $field['label'] = sprintf('bigfoot_core.crud.fields.%s.%s.label', $this->getName(), $key);
                 }
                 $fields[$key] = $field;
             }
@@ -814,7 +814,7 @@ abstract class CrudController extends BaseController
                 'form_cancel' => $this->getRouteNameForAction('index'),
                 'entity'      => $entity,
                 'layout'      => $this->getRequest()->query->get('layout') ?: '',
-                'form_name'   => $this->getBlockPrefix(),
+                'form_name'   => $this->getName(),
             )
         );
     }

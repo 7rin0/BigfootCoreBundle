@@ -38,7 +38,7 @@ class SortableEntityType extends AbstractType
     /**
      * @return string
      */
-    public function getBlockPrefix()
+    public function getName()
     {
         return 'sortable_entity';
     }

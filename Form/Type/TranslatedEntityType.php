@@ -72,7 +72,7 @@ class TranslatedEntityType extends AbstractType
     /**
      * @return string
      */
-    public function getBlockPrefix()
+    public function getName()
     {
         return 'translatable_entity';
     }

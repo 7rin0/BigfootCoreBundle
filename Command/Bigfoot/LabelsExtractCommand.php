@@ -83,9 +83,9 @@ EOT
             }
 
             $categoryPrefix = $category.'.';
-            $labelName = $label->getBlockPrefix();
+            $labelName = $label->getName();
             if (strpos($labelName, $categoryPrefix) === 0) {
-                $labelName = substr($label->getBlockPrefix(), strlen($categoryPrefix));
+                $labelName = substr($label->getName(), strlen($categoryPrefix));
             }
 
             $labelArray = array();

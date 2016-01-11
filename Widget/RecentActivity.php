@@ -37,7 +37,7 @@ class RecentActivity extends AbstractWidget
                     $timelineItem = array(
                         'time' => $entity->getCreated()->format('H:i'),
                         'username' => $entity->getCreatedBy(),
-                        'name' => $entity->getBlockPrefix(),
+                        'name' => $entity->getName(),
                     );
 
                     // Create edit link if controller declared for entity

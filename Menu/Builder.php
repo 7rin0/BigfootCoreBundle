@@ -155,7 +155,7 @@ class Builder
     {
         foreach ($dbMenu->getItems() as $item) {
             $route = array(
-                'label'          => $item->getBlockPrefix(),
+                'label'          => $item->getName(),
                 'route'          => $item->getRoute(),
                 'linkAttributes' => array(
                     'class' => 'dropdown-toggle',
@@ -167,12 +167,12 @@ class Builder
 
             if (count($parameters)) {
                 foreach ($parameters as $parameter) {
-                    $route['routeParameters'][$parameter->getBlockPrefix()] = $parameter->getValue();
+                    $route['routeParameters'][$parameter->getName()] = $parameter->getValue();
                 }
             }
 
             $menu->addChild(
-                $item->getBlockPrefix(),
+                $item->getName(),
                 $route
             );
         }

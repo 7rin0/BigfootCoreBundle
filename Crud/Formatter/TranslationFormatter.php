@@ -34,7 +34,7 @@ class TranslationFormatter implements FormatterInterface
     /**
      * @return string
      */
-    public function getBlockPrefix()
+    public function getName()
     {
         return 'trans';
     }
