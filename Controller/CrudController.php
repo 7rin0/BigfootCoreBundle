@@ -4,7 +4,6 @@ namespace Bigfoot\Bundle\CoreBundle\Controller;
 
 use Bigfoot\Bundle\CoreBundle\Manager\FilterManager;
 use Doctrine\ORM\Query;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -621,6 +620,7 @@ abstract class CrudController extends BaseController
     protected function doDelete(RequestStack $requestStack, $id)
     {
         $entity = $this->getRepository($this->getEntity())->find($id);
+        $requestStack = $requestStack->getCurrentRequest();
 
         if (!$entity) {
             throw new NotFoundHttpException(
@@ -633,7 +633,7 @@ abstract class CrudController extends BaseController
 
         $this->removeAndFlush($entity);
 
-        if (!$request->isXmlHttpRequest()) {
+        if (!$requestStack->isXmlHttpRequest()) {
             $this->addSuccessFlash('bigfoot_core.flash.delete.confirm');
 
             return $this->redirect($this->generateUrl($this->getRouteNameForAction('index')));
@@ -660,6 +660,7 @@ abstract class CrudController extends BaseController
     protected function doDeleteFile(RequestStack $requestStack, $id, $property)
     {
         $entity = $this->getRepository($this->getEntity())->find($id);
+        $requestStack = $requestStack->getCurrentRequest();
 
         if (!$entity) {
             throw new NotFoundHttpException(
@@ -693,7 +694,7 @@ abstract class CrudController extends BaseController
             $this->persistAndFlush($entity);
         }
 
-        if (!$request->isXmlHttpRequest()) {
+        if (!$requestStack->isXmlHttpRequest()) {
             $this->addSuccessFlash('bigfoot_core.flash.delete_file.confirm');
 
             return $this->redirect($this->generateUrl($this->getRouteNameForAction('edit'), array('id' => $id)));
@@ -716,6 +717,7 @@ abstract class CrudController extends BaseController
     protected function doDuplicate(RequestStack $requestStack, $id)
     {
         $entity = $this->getRepository($this->getEntity())->find($id);
+        $requestStack = $requestStack->getCurrentRequest();
 
         if (!$entity) {
             throw new NotFoundHttpException(

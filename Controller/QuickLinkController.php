@@ -7,7 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * QuickLink Controller
@@ -131,6 +131,7 @@ class QuickLinkController extends CrudController
     {
         $entity  = new QuickLink();
         $form = $this->container->get('form.factory')->create($this->getFormType(), $entity);
+        $requestStack = $requestStack->getCurrentRequest();
         $form->submit($requestStack);
 
         if ($form->isValid()) {
@@ -157,6 +158,6 @@ class QuickLinkController extends CrudController
      */
     public function deleteAction(RequestStack $requestStack, $id)
     {
-        return $this->doDelete($requestStack, $id);
+        return $this->doDelete($requestStack->getCurrentRequest(), $id);
     }
 }

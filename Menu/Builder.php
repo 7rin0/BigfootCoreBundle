@@ -6,7 +6,7 @@ use Bigfoot\Bundle\CoreBundle\Event\MenuEvent;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Security;
 
 /**
@@ -126,21 +126,6 @@ class Builder
      */
     public function createTestMenu(RequestStack $requestStack)
     {
-        // $dbMenu = $this->entityManager->getRepository('BigfootNavigationBundle:Menu')->findOneByName('test');
-
-        // if (!$dbMenu) {
-        //     throw new NotFoundHttpException("Menu not found");
-        // }
-
-        // $menu = $this->factory->createItem('test');
-
-        // $menu->setChildrenAttributes(
-        //     array(
-        //         'class' => 'nav nav-list',
-        //     )
-        // );
-
-        // return $this->generateMenu($menu, $dbMenu);
     }
 
     /**

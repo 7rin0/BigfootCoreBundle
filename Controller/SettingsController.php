@@ -6,7 +6,6 @@ use Bigfoot\Bundle\CoreBundle\Entity\Settings;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Settings Controller.
@@ -39,7 +38,7 @@ class SettingsController extends BaseController
             !empty($settings) ? $settings->getSettings() : null
         );
 
-        if ($request->isMethod('POST')) {
+        if ($requestStack->isMethod('POST')) {
             $form->handleRequest($requestStack);
 
             $datas = $form->getData();

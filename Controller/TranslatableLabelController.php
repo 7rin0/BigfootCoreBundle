@@ -6,7 +6,7 @@ use Bigfoot\Bundle\CoreBundle\Manager\TranslatableLabelManager;
 use Doctrine\ORM\Query;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * TranslatableLabel controller.
@@ -128,7 +128,7 @@ class TranslatableLabelController extends CrudController
      */
     public function editAction(RequestStack $requestStack, $id)
     {
-        return $this->doEdit($requestStack, $id);
+        return $this->doEdit($requestStack->getCurrentRequest(), $id);
     }
 
     /**

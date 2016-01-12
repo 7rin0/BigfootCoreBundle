@@ -4,7 +4,7 @@ namespace Bigfoot\Bundle\CoreBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Route controller.
@@ -67,7 +67,7 @@ class RouteController extends CrudController
      */
     public function newAction(RequestStack $requestStack)
     {
-        return $this->doNew($requestStack);
+        return $this->doNew($requestStack->getCurrentRequest());
     }
 
     /**
@@ -77,7 +77,7 @@ class RouteController extends CrudController
      */
     public function editAction(RequestStack $requestStack, $id)
     {
-        return $this->doEdit($requestStack, $id);
+        return $this->doEdit($requestStack->getCurrentRequest(), $id);
     }
 
     /**
@@ -87,6 +87,6 @@ class RouteController extends CrudController
      */
     public function deleteAction(RequestStack $requestStack, $id)
     {
-        return $this->doDelete($requestStack, $id);
+        return $this->doDelete($requestStack->getCurrentRequest(), $id);
     }
 }
