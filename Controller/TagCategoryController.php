@@ -65,7 +65,7 @@ class TagCategoryController extends CrudController
      *
      * @Route("/new", name="admin_tag_category_new")
      */
-    public function newAction(Request $request)
+    public function newAction(RequestStack $requestStack)
     {
         return $this->doNew($request);
     }
@@ -75,7 +75,7 @@ class TagCategoryController extends CrudController
      *
      * @Route("/{id}/edit", name="admin_tag_category_edit")
      */
-    public function editAction(Request $request, $id)
+    public function editAction(RequestStack $requestStack, $id)
     {
         return $this->doEdit($request, $id);
     }
@@ -86,7 +86,7 @@ class TagCategoryController extends CrudController
      * @Route("/{id}/delete", name="admin_tag_category_delete")
      * @Method("GET|DELETE")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(RequestStack $requestStack, $id)
     {
         return $this->doDelete($request, $id);
     }

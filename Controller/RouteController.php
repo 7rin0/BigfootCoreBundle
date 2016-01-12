@@ -65,7 +65,7 @@ class RouteController extends CrudController
      *
      * @Route("/new", name="bigfoot_route_new")
      */
-    public function newAction(Request $request)
+    public function newAction(RequestStack $requestStack)
     {
         return $this->doNew($request);
     }
@@ -75,7 +75,7 @@ class RouteController extends CrudController
      *
      * @Route("/edit/{id}", name="bigfoot_route_edit")
      */
-    public function editAction(Request $request, $id)
+    public function editAction(RequestStack $requestStack, $id)
     {
         return $this->doEdit($request, $id);
     }
@@ -85,7 +85,7 @@ class RouteController extends CrudController
      *
      * @Route("/delete/{id}", name="bigfoot_route_delete")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction(RequestStack $requestStack, $id)
     {
         return $this->doDelete($request, $id);
     }

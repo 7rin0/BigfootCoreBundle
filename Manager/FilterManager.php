@@ -33,7 +33,7 @@ class FilterManager
     /**
      * @var Request
      */
-    private $request;
+    private $requestStack;
 
     /**
      * @var array
@@ -58,7 +58,7 @@ class FilterManager
      * @param Session       $session
      * @param Request       $request
      */
-    public function __construct(FormFactory $formFactory, EntityManager $entityManager, Session $session, Request $request)
+    public function __construct(FormFactory $formFactory, EntityManager $entityManager, Session $session, RequestStack $requestStack)
     {
         $this->formFactory   = $formFactory;
         $this->entityManager = $entityManager;
@@ -111,7 +111,7 @@ class FilterManager
         $datas   = $form->getData();
         $filters = $globalFilters['fields'];
 
-        if ($this->request->request->get('clear', null) != null) {
+        if ($this->requestStack->request->get('clear', null) != null) {
             $this->session->set('bigfoot.crud.index.filters.'.strtolower($entityName), array());
 
             return true;

@@ -14,11 +14,11 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class QuickLinkType extends AbstractType
 {
     private $securityContext;
-    private $request;
+    private $requestStack;
 
     public function __construct($request)
     {
-        $this->request = $request;
+        $this->requestStack = $requestStack->getCurrentRequest();
     }
 
     public function setSecurityContext($securityContext)
@@ -39,7 +39,7 @@ class QuickLinkType extends AbstractType
                 'data' => $user->getId()
             ))
             ->add('link',TextType::class,array(
-                'data' => $this->request->headers->get('referer')
+                'data' => $this->requestStack->headers->get('referer')
             ))
             ->add('labelLink')
         ;

@@ -13,7 +13,7 @@
 {% endblock phpdoc_method_annotations %}
  */
 {% block method_definition %}
-    public function updateAction(Request $request, $id)
+    public function updateAction(RequestStack $requestStack, $id)
 {% endblock method_definition %}
     {
 {% block method_body %}

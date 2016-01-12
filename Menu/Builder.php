@@ -7,7 +7,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\SecurityContextInterface;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * Menu Builder
@@ -20,7 +20,7 @@ class Builder
     protected $entityManager;
 
     /**
-     * @var SecurityContextInterface
+     * @var Security
      */
     protected $security;
 
@@ -38,11 +38,11 @@ class Builder
      * Constructor
      *
      * @param EntityManager            $entityManager
-     * @param SecurityContextInterface $security
+     * @param Security $security
      * @param EventDispatcherInterface          $eventDispatcher
      * @param MenuManager              $menuManager
      */
-    public function __construct(EntityManager $entityManager, SecurityContextInterface $security, EventDispatcherInterface $eventDispatcher, MenuManager $menuManager)
+    public function __construct(EntityManager $entityManager, Security $security, EventDispatcherInterface $eventDispatcher, MenuManager $menuManager)
     {
         $this->entityManager   = $entityManager;
         $this->security        = $security;
@@ -53,11 +53,11 @@ class Builder
     /**
      * Create main menu
      *
-     * @param  Request $request
+     * @param  RequestStack $requestStack
      *
      * @return Menu
      */
-    public function createMainMenu(Request $request)
+    public function createMainMenu(RequestStack $requestStack)
     {
         $builder = $this
             ->menuManager
@@ -120,11 +120,11 @@ class Builder
     /**
      * Create test menu
      *
-     * @param  Request $request
+     * @param  RequestStack $requestStack
      *
      * @return Menu
      */
-    public function createTestMenu(Request $request)
+    public function createTestMenu(RequestStack $requestStack)
     {
         // $dbMenu = $this->entityManager->getRepository('BigfootNavigationBundle:Menu')->findOneByName('test');
 

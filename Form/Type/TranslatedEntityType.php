@@ -18,17 +18,17 @@ class TranslatedEntityType extends AbstractType
     protected $translationSubscriber;
 
     /** @var \Symfony\Component\HttpFoundation\Request */
-    protected $request;
+    protected $requestStack;
 
     /** @var array */
     protected $localeList;
 
     /**
      * @param TranslationSubscriber $translationSubscriber
-     * @param Request $request
+     * @param RequestStack $requestStack
      * @param $localeList
      */
-    public function __construct(TranslationSubscriber $translationSubscriber, Request $request, $localeList)
+    public function __construct(TranslationSubscriber $translationSubscriber, RequestStack $requestStack, $localeList)
     {
         $this->translationSubscriber = $translationSubscriber;
         $this->request               = $request;

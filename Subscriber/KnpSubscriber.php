@@ -7,11 +7,11 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class KnpSubscriber implements EventSubscriberInterface
 {
-    private $request;
+    private $requestStack;
 
-    public function setRequest($request)
+    public function setRequestStack($requestStack)
     {
-        $this->request = $request;
+        $this->requestStack = $requestStack->getCurrentRequest();
     }
 
     public static function getSubscribedEvents()

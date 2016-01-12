@@ -16,11 +16,11 @@ use Symfony\Component\Security\Acl\Exception\Exception;
  */
 class RouteRepository extends EntityRepository implements RouterInterface
 {
-    private $request;
+    private $requestStack;
 
-    public function setRequest($request)
+    public function setRequestStack($requestStack)
     {
-        $this->request = $request;
+        $this->requestStack = $requestStack->getCurrentRequest();
     }
 
     public function getRouteCollection()
@@ -29,8 +29,8 @@ class RouteRepository extends EntityRepository implements RouterInterface
 
     public function match($pathinfo)
     {
-        $scheme   = $this->request->server->get('REQUEST_SCHEME');
-        $httpHost = $this->request->server->get('HTTP_HOST');
+        $scheme   = $this->requestStack->server->get('REQUEST_SCHEME');
+        $httpHost = $this->requestStack->server->get('HTTP_HOST');
         $domain   = $scheme.'://'.$httpHost;
 
         if ($route = $this->findOneByUrl($domain.$pathinfo)) {

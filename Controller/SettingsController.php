@@ -21,7 +21,7 @@ class SettingsController extends BaseController
     /**
      * Globale settings action
      *
-     * @param Request $request
+     * @param RequestStack $requestStack
      *
      * @Route("/global", name="admin_settings_global")
      * @Template("BigfootCoreBundle:settings:form.html.twig")
@@ -29,7 +29,7 @@ class SettingsController extends BaseController
      *
      * @return array
      */
-    public function globalAction(Request $request)
+    public function globalAction(RequestStack $requestStack)
     {
         $settings = $this->getRepository('BigfootCoreBundle:Settings')->findAll();
         $settings = !empty($settings) ? current($settings) : null;
