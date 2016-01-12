@@ -18,6 +18,6 @@
 {% endblock method_body %}
 
 {% block method_return %}
-    return $this->doDelete($request, $id);
+    return $this->doDelete($requestStack, $id);
 {% endblock method_return %}
 }

@@ -131,7 +131,7 @@ class QuickLinkController extends CrudController
     {
         $entity  = new QuickLink();
         $form = $this->container->get('form.factory')->create($this->getFormType(), $entity);
-        $form->submit($request);
+        $form->submit($requestStack);
 
         if ($form->isValid()) {
             $em = $this->container->get('doctrine')->getManager();
@@ -157,6 +157,6 @@ class QuickLinkController extends CrudController
      */
     public function deleteAction(RequestStack $requestStack, $id)
     {
-        return $this->doDelete($request, $id);
+        return $this->doDelete($requestStack, $id);
     }
 }

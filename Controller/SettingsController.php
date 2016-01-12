@@ -40,7 +40,7 @@ class SettingsController extends BaseController
         );
 
         if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
+            $form->handleRequest($requestStack);
 
             $datas = $form->getData();
 

@@ -20,7 +20,7 @@
 
 {% block method_return %}
     {% if 'annotation' == format %}
-    return $this->doCreate($request);
+    return $this->doCreate($requestStack);
     {% else %}
     return $this->container->get('templating')->renderResponse('BigfootCoreBundle:crud:new.html.twig', $this->doCreate($request));
     {% endif %}

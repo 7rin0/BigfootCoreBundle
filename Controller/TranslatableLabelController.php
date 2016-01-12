@@ -128,7 +128,7 @@ class TranslatableLabelController extends CrudController
      */
     public function editAction(RequestStack $requestStack, $id)
     {
-        return $this->doEdit($request, $id);
+        return $this->doEdit($requestStack, $id);
     }
 
     /**
