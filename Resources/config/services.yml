@@ -275,7 +275,7 @@ services:
     bigfoot_core.subscriber.knp:
         class: Bigfoot\Bundle\CoreBundle\Subscriber\KnpSubscriber
         calls:
-            - [setRequest, ['@?request=']]
+            - [setRequestStack, ['@request_stack']]
         tags:
             - { name: knp_paginator.subscriber }
 
@@ -343,7 +343,7 @@ services:
         tags:
             - { name: router, priority: 200 }
         calls:
-            - [setRequest, ['@?request=']]
+            - [setRequestStack, ['@request_stack']]
 
     # FileUploadManager
     bigfoot_core.manager.file_manager:
