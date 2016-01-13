@@ -60,7 +60,7 @@ class TranslatableLabelController extends CrudController
     /**
      * @return array
      */
-    protected function getFilters()
+    public function getFilters()
     {
         return array(
             array(

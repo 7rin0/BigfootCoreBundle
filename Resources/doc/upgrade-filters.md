@@ -8,7 +8,7 @@ To implement the filters you need to add this function in your controller
  *
  * @return array
  */
-protected function getFilters()
+()
 {
     return array();
 }
@@ -33,7 +33,7 @@ options: array of options (different for each type)
 You can define a filter on an Entity
 
 ```php
-protected function getFilters()
+public function getFilters()
 {
     return array(
         array(
@@ -69,7 +69,7 @@ query_builder: function to act on the result of entity field
 This type is used to generate a select with specifics fields
 
 ```php
-protected function getFilters()
+public function getFilters()
 {
     return array(
         array(
@@ -100,7 +100,7 @@ This type referes to the reference entity.
 You can diplay it on a select field (type: choice) or on an input field (type: text).
 
 ```php
-protected function getFilters()
+public function getFilters()
 {
     return array(
         // display a select
@@ -140,7 +140,7 @@ If you specify nothing or text a input is display.
 This type can search in an group of fields.
 
 ```php
-protected function getFilters()
+public function getFilters()
 {
     return array(
         array(

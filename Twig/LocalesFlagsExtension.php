@@ -3,13 +3,14 @@
 namespace Bigfoot\Bundle\CoreBundle\Twig;
 
 use Twig_Extension;
+use Twig_Extension_GlobalsInterface;
 
 /**
  * Class LocalesFlagsExtension
  *
  * @package Bigfoot\Bundle\CoreBundle\Twig
  */
-class LocalesFlagsExtension extends Twig_Extension
+class LocalesFlagsExtension extends Twig_Extension implements Twig_Extension_GlobalsInterface
 {
     /** @var \Twig_Environment */
     protected $twig;
@@ -25,18 +26,17 @@ class LocalesFlagsExtension extends Twig_Extension
         $this->locales = $locales;
     }
 
-    public function initRuntime(\Twig_Environment $twig)
-    {
-        $this->twig = $twig;
-    }
-
     /**
      * @return array
      */
     public function getFunctions()
     {
+        $options = array(
+            'is_safe' => array('html'),
+            'needs_environment' => true,
+        );
         return array(
-            'bigfoot_locale_flags' => new \Twig_Function_Method($this, 'localeFlags', array('is_safe' => array('html'))),
+            'bigfoot_locale_flags' => new \Twig_SimpleFunction($this, 'localeFlags', $options)
         );
     }
 

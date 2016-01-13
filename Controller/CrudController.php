@@ -86,7 +86,7 @@ abstract class CrudController extends BaseController
      *
      * @return array
      */
-    protected function getFilters()
+    public function getFilters()
     {
         return array();
     }

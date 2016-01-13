@@ -22,13 +22,10 @@ class FileExtension extends Twig_Extension
         $this->fileManager = $fileManager;
     }
 
-    /**
-     * @return array
-     */
     public function getFilters()
     {
         return array(
-            'bigfoot_file' => new \Twig_Filter_Method($this, 'bigfootFile'),
+            new Twig_SimpleFilter('bigfoot_file', array($this, 'bigfootFile'))
         );
     }
 
