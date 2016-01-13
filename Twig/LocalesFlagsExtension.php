@@ -36,7 +36,7 @@ class LocalesFlagsExtension extends Twig_Extension implements Twig_Extension_Glo
             'needs_environment' => true,
         );
         return array(
-            'bigfoot_locale_flags' => new \Twig_SimpleFunction($this, 'localeFlags', $options)
+            new \Twig_SimpleFunction('bigfoot_locale_flags', array($this, 'localeFlags', $options))
         );
     }
 

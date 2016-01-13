@@ -25,14 +25,17 @@ class FileExtension extends Twig_Extension
     public function getFilters()
     {
         return array(
-            new Twig_SimpleFilter('bigfoot_file', array($this, 'bigfootFile'))
+            new \Twig_SimpleFilter('bigfoot_file', array($this, 'bigfootFile'))
         );
     }
 
     /**
-     * @param mixed $entity
-     * @param strign $field
+     * @param      $entity
+     * @param      $filePathField
+     * @param bool $absolute
+     *
      * @return string
+     * @throws \Exception
      */
     public function bigfootFile($entity, $filePathField, $absolute = false)
     {
