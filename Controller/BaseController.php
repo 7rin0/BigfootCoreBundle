@@ -14,7 +14,7 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Translation\Translator;
 
 /**
@@ -147,11 +147,11 @@ class BaseController extends Controller
     /**
      * Get Security Context
      *
-     * @return SecurityContext
+     * @return Security
      */
     protected function getSecurity()
     {
-        return $this->get('security.context');
+        return $this->get('security.authorization_checker');
     }
 
     /**
@@ -167,7 +167,7 @@ class BaseController extends Controller
     /**
      * Get Router
      *
-     * @return SecurityContext
+     * @return Security
      */
     protected function getRouter()
     {
@@ -177,7 +177,7 @@ class BaseController extends Controller
     /**
      * Get Templating
      *
-     * @return SecurityContext
+     * @return Security
      */
     protected function getTemplating()
     {

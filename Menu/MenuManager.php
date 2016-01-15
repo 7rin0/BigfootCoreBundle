@@ -6,7 +6,7 @@ use Bigfoot\Bundle\UserBundle\Entity\Role;
 use Bigfoot\Bundle\UserBundle\Entity\RoleMenu;
 use Doctrine\ORM\EntityManager;
 use Knp\Menu\FactoryInterface;
-use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Security;
 
 /**
  * Menu Manager
@@ -53,9 +53,9 @@ class MenuManager
      *
      * @param FactoryInterface  $factory
      * @param EntityManager     $entityManager
-     * @param SecurityContext   $security
+     * @param Security   $security
      */
-    public function __construct(FactoryInterface $factory, EntityManager $entityManager, SecurityContext $security)
+    public function __construct(FactoryInterface $factory, EntityManager $entityManager, Security $security)
     {
         $this->factory       = $factory;
         $this->entityManager = $entityManager;

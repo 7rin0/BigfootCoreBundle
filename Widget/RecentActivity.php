@@ -102,7 +102,7 @@ class RecentActivity extends AbstractWidget
                     }
                 }
                 $content = $this->renderTab($tab['name'], $tab);
-            } elseif ($this->container->get('security.context')->isGranted('ROLE_ADMIN')) {
+            } elseif ($this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
                 $content = $this->renderTab($tab['name'], $tab, 'error');
             } else {
                 $content = "";
