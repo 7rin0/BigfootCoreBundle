@@ -193,6 +193,7 @@ services:
         class: Bigfoot\Bundle\CoreBundle\Twig\LocalesFlagsExtension
         arguments:
             - %bigfoot_core.languages.front%
+            - '@twig'
         tags:
             - { name: twig.extension }
     bigfoot_core.twig.formatter_extension:

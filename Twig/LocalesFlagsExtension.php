@@ -21,9 +21,10 @@ class LocalesFlagsExtension extends Twig_Extension implements Twig_Extension_Glo
     /**
      * @param $locales
      */
-    public function __construct($locales)
+    public function __construct($locales, \Twig_Environment $environment)
     {
         $this->locales = $locales;
+        $this->twig = $environment;
     }
 
     /**
