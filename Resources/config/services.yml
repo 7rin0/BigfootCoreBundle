@@ -177,9 +177,7 @@ services:
     # QuickLink type
     bigfoot.form.type.quicklink:
         class: Bigfoot\Bundle\CoreBundle\Form\QuickLinkType
-        arguments: ["@request_stack"]
-        calls:
-            - [setSecurityContext, ["@security.authorization_checker"]]
+        arguments: ["@request_stack", "@security.token_storage"]
         scope: request_stack
         tags:
             - { name: form.type }
@@ -230,7 +228,7 @@ services:
         class: Bigfoot\Bundle\CoreBundle\Menu\Builder
         arguments:
             - "@doctrine.orm.entity_manager"
-            - "@security.authorization_checker"
+            - "@security.token_storage"
             - "@event_dispatcher"
             - "@bigfoot_core.manager.menu"
 
@@ -240,7 +238,7 @@ services:
         arguments:
             - "@knp_menu.factory"
             - "@doctrine.orm.entity_manager"
-            - "@security.authorization_checker"
+            - "@security.token_storage"
 
     # Menu main
     bigfoot_core.menu.main:

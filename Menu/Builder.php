@@ -7,6 +7,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Security;
 
 /**
@@ -42,7 +43,7 @@ class Builder
      * @param EventDispatcherInterface          $eventDispatcher
      * @param MenuManager              $menuManager
      */
-    public function __construct(EntityManager $entityManager, Security $security, EventDispatcherInterface $eventDispatcher, MenuManager $menuManager)
+    public function __construct(EntityManager $entityManager, TokenStorage $security, EventDispatcherInterface $eventDispatcher, MenuManager $menuManager)
     {
         $this->entityManager   = $entityManager;
         $this->security        = $security;

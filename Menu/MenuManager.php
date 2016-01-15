@@ -6,6 +6,7 @@ use Bigfoot\Bundle\UserBundle\Entity\Role;
 use Bigfoot\Bundle\UserBundle\Entity\RoleMenu;
 use Doctrine\ORM\EntityManager;
 use Knp\Menu\FactoryInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Symfony\Component\Security\Core\Security;
 
 /**
@@ -55,7 +56,7 @@ class MenuManager
      * @param EntityManager     $entityManager
      * @param Security   $security
      */
-    public function __construct(FactoryInterface $factory, EntityManager $entityManager, Security $security)
+    public function __construct(FactoryInterface $factory, EntityManager $entityManager, TokenStorage $security)
     {
         $this->factory       = $factory;
         $this->entityManager = $entityManager;

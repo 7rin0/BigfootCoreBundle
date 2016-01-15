@@ -7,6 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 /**
  * Class QuickLinkType
@@ -17,13 +18,9 @@ class QuickLinkType extends AbstractType
     private $securityContext;
     private $requestStack;
 
-    public function __construct(RequestStack $requestStack)
+    public function __construct(RequestStack $requestStack, TokenStorage $securityContext)
     {
         $this->requestStack = $requestStack->getCurrentRequest();
-    }
-
-    public function setSecurityContext($securityContext)
-    {
         $this->securityContext = $securityContext;
     }
 
