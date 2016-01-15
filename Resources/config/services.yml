@@ -245,8 +245,7 @@ services:
     # Menu main
     bigfoot_core.menu.main:
         class: Knp\Menu\MenuItem
-        factory: bigfoot_core.menu_builder
-        factory_method: createMainMenu
+        factory: ["@bigfoot_core.menu_builder", createMainMenu]
         scope: request_stack
         arguments:
             - "@request_stack"
@@ -256,8 +255,7 @@ services:
     # Menu test
     bigfoot_core.menu.test:
         class: Knp\Menu\MenuItem
-        factory: bigfoot_core.menu_builder
-        factory_method: createTestMenu
+        factory: ["@bigfoot_core.menu_builder", createMainMenu]
         scope: request_stack
         arguments:
             - "@request_stack"
@@ -338,8 +336,7 @@ services:
         class: Bigfoot\Bundle\CoreBundle\Entity\RouteRepository
         arguments:
             - 'BigfootCoreBundle:Route'
-        factory: doctrine.orm.entity_manager
-        factory_method: getRepository
+        factory: ["@doctrine.orm.entity_manager", getRepository]
         tags:
             - { name: router, priority: 200 }
         calls:
