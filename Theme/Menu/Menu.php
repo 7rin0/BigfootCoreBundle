@@ -91,8 +91,8 @@ class Menu
         try {
             $items = array();
 
-            $securityContext = $this->container->get('security.authorization_checker');
-            $em = $this->container->get('doctrine')->getManager();
+            $securityContext = $this->get('security.authorization_checker');
+            $em = $this->get('doctrine')->getManager();
 
             $entities = $em->getRepository('BigfootUserBundle:BigfootRoleMenu')->findAll();
 

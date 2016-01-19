@@ -98,7 +98,7 @@ abstract class CrudController extends BaseController
      */
     protected function getFilterManager()
     {
-        return $this->container->get('bigfoot_core.manager.filters');
+        return $this->get('bigfoot_core.manager.filters');
     }
 
     /**
@@ -235,7 +235,7 @@ abstract class CrudController extends BaseController
      */
     protected function getEntityTypeClass()
     {
-        $namespace = $this->container->get('kernel')->getBundle($this->getBundleName())->getNamespace();
+        $namespace = $this->get('kernel')->getBundle($this->getBundleName())->getNamespace();
 
         return sprintf('\\%s\\Form\\%sType', $namespace, $this->getEntityName());
     }
@@ -932,7 +932,7 @@ abstract class CrudController extends BaseController
     {
         $entity = $this->getRepository($this->getEntity())->find($id);
         if (method_exists($entity, 'setTranslatableLocale')) {
-            $entity->setTranslatableLocale($this->container->getParameter('locale'));
+            $entity->setTranslatableLocale($this->getParameter('locale'));
             $this->getEntityManager()->refresh($entity);
         }
 

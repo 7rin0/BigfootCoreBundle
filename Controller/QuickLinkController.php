@@ -129,12 +129,12 @@ class QuickLinkController extends CrudController
     public function createAction()
     {
         $entity  = new QuickLink();
-        $form = $this->container->get('form.factory')->create($this->getFormType(), $entity);
-        $requestStack = $requestStack->getCurrentRequest();
+        $form = $this->get('form.factory')->create($this->getFormType(), $entity);
+        $requestStack = $this->getRequestStack();
         $form->submit($requestStack);
 
         if ($form->isValid()) {
-            $em = $this->container->get('doctrine')->getManager();
+            $em = $this->get('doctrine')->getManager();
             $em->persist($entity);
             $em->flush();
 

@@ -89,7 +89,7 @@ class FileManager
      */
     private function getUploadDir($entity)
     {
-        $webDir    = $this->container->get('kernel')->getRootDir() . '/../web/';
+        $webDir    = $this->get('kernel')->getRootDir() . '/../web/';
         $uploadDir = $this->container->getParameter('bigfoot.core.upload_dir');
         $reflClass = new \ReflectionClass(get_class($entity));
         $entityDir = strtolower($reflClass->getShortName()) . '/';

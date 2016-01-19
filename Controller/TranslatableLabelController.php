@@ -138,7 +138,7 @@ class TranslatableLabelController extends CrudController
     {
         $entity = parent::getFormEntity($id);
         if ($entity) {
-            $entity->setTranslatableLocale($this->container->getParameter('locale'));
+            $entity->setTranslatableLocale($this->getParameter('locale'));
             $this->getEntityManager()->refresh($entity);
         }
 

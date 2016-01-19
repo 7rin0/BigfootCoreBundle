@@ -66,7 +66,7 @@ class BaseController extends Controller
      */
     protected function isGranted($attributes, $object = null)
     {
-        return $this->container->get('security.authorization_checker')->isGranted($attributes, $object);
+        return $this->get('security.authorization_checker')->isGranted($attributes, $object);
     }
 
     /**
@@ -115,7 +115,7 @@ class BaseController extends Controller
 
     protected function getThemeBundle()
     {
-        return $this->container->getParameter('bigfoot.theme.bundle');
+        return $this->getParameter('bigfoot.theme.bundle');
     }
 
     /**

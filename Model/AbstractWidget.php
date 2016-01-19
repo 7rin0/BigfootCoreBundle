@@ -47,7 +47,7 @@ abstract class AbstractWidget
      */
     public function render()
     {
-        return $this->container->get('templating')->render($this->getTemplate(), array('widget' => $this));
+        return $this->get('templating')->render($this->getTemplate(), array('widget' => $this));
     }
 
     /**
