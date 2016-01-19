@@ -159,6 +159,6 @@ class QuickLinkController extends CrudController
      */
     public function deleteAction($id)
     {
-        return $this->doDelete($requestStack->getCurrentRequest(), $id);
+        return $this->doDelete($id);
     }
 }
