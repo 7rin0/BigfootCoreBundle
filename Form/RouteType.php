@@ -4,6 +4,7 @@ namespace Bigfoot\Bundle\CoreBundle\Form;
 
 use Bigfoot\Bundle\CoreBundle\Entity\Route;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,7 +27,7 @@ class RouteType extends AbstractType
             ->add('url', TextType::class, array(
                 'required' => true
             ))
-            ->add('type', 'choice', array(
+            ->add('type', ChoiceType::class, array(
                 'choices'  => $arrayType,
                 'required' => true
             ))
@@ -48,18 +49,10 @@ class RouteType extends AbstractType
     /**
      * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'Bigfoot\Bundle\CoreBundle\Entity\Route'
         ));
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'bigfoot_bundle_corebundle_routetype';
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Controller;
 
+use Bigfoot\Bundle\CoreBundle\Form\RouteType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -46,7 +47,7 @@ class RouteController extends CrudController
 
     protected function getFormType()
     {
-        return 'bigfoot_bundle_corebundle_routetype';
+        return RouteType::class;
     }
 
     /**

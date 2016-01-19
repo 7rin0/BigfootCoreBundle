@@ -33,7 +33,7 @@ class TagType extends AbstractType
     /**
      * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'Bigfoot\Bundle\CoreBundle\Entity\Tag'

@@ -75,7 +75,7 @@ public function getFilters()
         array(
             'placeholder' => 'Active',
             'name'        => 'active',
-            'type'        => 'choice',
+            'type'        => ChoiceType::class,
             'options' => array(
                 'choices'    => array(
                     '1' => 'Yes',
@@ -109,7 +109,7 @@ public function getFilters()
             'name'        => 'name',
             'type'        => 'referer',
             'options' => array(
-                'type'     => 'choice',
+                'type'     => ChoiceType::class,
                 'property' => 'name'
             )
         ),

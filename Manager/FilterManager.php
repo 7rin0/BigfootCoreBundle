@@ -5,6 +5,7 @@ namespace Bigfoot\Bundle\CoreBundle\Manager;
 use Bigfoot\Bundle\CoreBundle\Entity\TranslatableLabelRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\QueryBuilder;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -172,11 +173,11 @@ class FilterManager
                                 $this->addJoin('e.'.$options['relation'], '_r'.$key, 'WITH _r'.$key.'.id = '.$data->getId());
                             }
                             break;
-                        case 'choice':
+                        case ChoiceType::class:
                             $this->addWhere($options['property'], $data);
                             break;
                         case 'referer':
-                            if (isset($options['type']) && $options['type'] == 'choice') {
+                            if (isset($options['type']) && $options['type'] == ChoiceType::class) {
                                 $this->addWhere($options['property'], $data);
                             } else {
                                 $this->addWhere($options['property'], $data, 'LIKE');
@@ -306,7 +307,7 @@ class FilterManager
 
                     $filters[] = $field;
                     break;
-                case 'choice':
+                case ChoiceType::class:
                     if (!isset($options['choices'])) {
                         throw new \Exception("You must define an array of choices");
                     }

@@ -47,7 +47,7 @@ class TranslatedEntityType extends AbstractType
     /**
      * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'translation_class' => null,

@@ -4,6 +4,7 @@ namespace Bigfoot\Bundle\CoreBundle\Form\Type;
 
 use Bigfoot\Bundle\CoreBundle\Manager\FilterManager;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -45,10 +46,10 @@ class FilterType extends AbstractType
             $options = isset($filter['options']) ? $filter['options'] : array();
             $value   = isset($datas[$filter['name']]) ? $datas[$filter['name']] : null;
 
-            if ($filter['type'] == 'choice' || $filter['type'] == 'repositoryMethod' || ($filter['type'] == 'referer' && $options['type'] == 'choice')) {
+            if ($filter['type'] == ChoiceType::class || $filter['type'] == 'repositoryMethod' || ($filter['type'] == 'referer' && $options['type'] == ChoiceType::class)) {
                 $builder->add(
                     $filter['name'],
-                    'choice',
+                    ChoiceType::class,
                     array(
                         'choices'  => $options['choices'],
                         'required' => false,
@@ -106,7 +107,7 @@ class FilterType extends AbstractType
     /**
      * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
             array(
