@@ -112,9 +112,9 @@ class QuickLinkController extends CrudController
      * @Route("/new", name="admin_quicklink_form_new")
      * @Template("BigfootCoreBundle:quicklink:popin.quicklink.html.twig")
      */
-    public function newAction(Request $request)
+    public function newAction()
     {
-        $arrayNew = $this->doNew($request);
+        $arrayNew = $this->doNew();
         $arrayNew['isAjax'] = true;
         $arrayNew['modal_title'] = 'bigfoot_core.quick_link.modal.title';
 
@@ -128,7 +128,7 @@ class QuickLinkController extends CrudController
      * @Method("POST")
      * @Template("BigfootCoreBundle:quicklink:popin.quicklink.html.twig")
      */
-    public function createAction(RequestStack $requestStack)
+    public function createAction()
     {
         $entity  = new QuickLink();
         $form = $this->container->get('form.factory')->create($this->getFormType(), $entity);
@@ -157,7 +157,7 @@ class QuickLinkController extends CrudController
      * @Route("/delete/{id}", name="admin_quicklink_delete")
      * @Method("GET|DELETE")
      */
-    public function deleteAction(RequestStack $requestStack, $id)
+    public function deleteAction($id)
     {
         return $this->doDelete($requestStack->getCurrentRequest(), $id);
     }

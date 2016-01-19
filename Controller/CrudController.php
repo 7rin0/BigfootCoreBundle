@@ -484,23 +484,23 @@ abstract class CrudController extends BaseController
     /**
      * Helper inserting a new entity into the database using Doctrine.
      *
-     * @param RequestStack $requestStack
+     * @param 
      *
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
-    protected function doNew(RequestStack $requestStack)
+    protected function doNew()
     {
         $entityClass = $this->getEntityClass();
         $entity      = new $entityClass();
         $form        = $this->createForm($this->getFormType(), $entity);
-        $requestStack = $requestStack->getCurrentRequest();
+        
         $action      = $this->generateUrl(
             $this->getRouteNameForAction('new'),
-            array('layout' => $requestStack->get('layout', null))
+            array('layout' => $this->getRequestStack()->get('layout', null))
         );
 
-        if ('POST' === $requestStack->getMethod()) {
-            $form->handleRequest($requestStack);
+        if ('POST' === $this->getRequestStack()->getMethod()) {
+            $form->handleRequest($this->getRequestStack());
 
             if ($form->isValid() and $this->isEntityValid($form)) {
                 $this->prePersist($entity, 'new');
@@ -509,7 +509,7 @@ abstract class CrudController extends BaseController
 
                 $this->postFlush($entity, 'new');
 
-                if (!$requestStack->isXmlHttpRequest()) {
+                if (!$this->getRequestStack()->isXmlHttpRequest()) {
                     $action = $this->generateUrl($this->getRouteNameForAction('edit'), array('id' => $entity->getId()));
 
                     $this->addSuccessFlash('bigfoot_core.flash.new.confirm');
@@ -524,7 +524,7 @@ abstract class CrudController extends BaseController
                 $session->set('bigfoot_core.crud.form.'.$this->getName().'.errors', $this->getFormErrorsAsArray($form));
             }
 
-            if ($requestStack->isXmlHttpRequest()) {
+            if ($this->getRequestStack()->isXmlHttpRequest()) {
                 return $this->renderAjax(
                     false,
                     'Error during process!',
@@ -541,16 +541,16 @@ abstract class CrudController extends BaseController
     /**
      * Helper creating an edit form for the entity with id.
      *
-     * @param RequestStack $requestStack
+     * @param 
      * @param int     $id
      *
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException If no entity with id $id is found.
      */
-    protected function doEdit(RequestStack $requestStack, $id)
+    protected function doEdit($id)
     {
         $entity = $this->getFormEntity($id);
-        $requestStack = $requestStack->getCurrentRequest();
+        
 
         if (!$entity) {
             throw new NotFoundHttpException(
@@ -564,11 +564,11 @@ abstract class CrudController extends BaseController
         $form   = $this->createForm($this->getFormType(), $entity);
         $action = $this->generateUrl(
             $this->getRouteNameForAction('edit'),
-            array('id' => $entity->getId(), 'layout' => $requestStack->get('layout', null))
+            array('id' => $entity->getId(), 'layout' => $this->getRequestStack()->get('layout', null))
         );
 
-        if ('POST' === $requestStack->getMethod()) {
-            $form->handleRequest($requestStack);
+        if ('POST' === $this->getRequestStack()->getMethod()) {
+            $form->handleRequest($this->getRequestStack());
 
             if ($form->isValid() and $this->isEntityValid($form)) {
                 $this->prePersist($entity, 'edit');
@@ -577,7 +577,7 @@ abstract class CrudController extends BaseController
 
                 $this->postFlush($entity, 'edit');
 
-                if (!$requestStack->isXmlHttpRequest()) {
+                if (!$this->getRequestStack()->isXmlHttpRequest()) {
                     $this->addSuccessFlash('bigfoot_core.flash.edit.confirm');
 
                     return $this->redirect($action);
@@ -590,7 +590,7 @@ abstract class CrudController extends BaseController
                 $session->set('bigfoot_core.crud.form.'.$this->getName().'.errors', $this->getFormErrorsAsArray($form));
             }
 
-            if ($requestStack->isXmlHttpRequest()) {
+            if ($this->getRequestStack()->isXmlHttpRequest()) {
                 return $this->renderAjax(
                     false,
                     'Error during process!',
@@ -611,16 +611,16 @@ abstract class CrudController extends BaseController
      *
      * Redirects to the index action.
      *
-     * @param RequestStack $requestStack
+     * @param 
      * @param         $id
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException If no entity with id $id is found.
      */
-    protected function doDelete(RequestStack $requestStack, $id)
+    protected function doDelete($id)
     {
         $entity = $this->getRepository($this->getEntity())->find($id);
-        $requestStack = $requestStack->getCurrentRequest();
+        
 
         if (!$entity) {
             throw new NotFoundHttpException(
@@ -633,7 +633,7 @@ abstract class CrudController extends BaseController
 
         $this->removeAndFlush($entity);
 
-        if (!$requestStack->isXmlHttpRequest()) {
+        if (!$this->getRequestStack()->isXmlHttpRequest()) {
             $this->addSuccessFlash('bigfoot_core.flash.delete.confirm');
 
             return $this->redirect($this->generateUrl($this->getRouteNameForAction('index')));
@@ -647,7 +647,7 @@ abstract class CrudController extends BaseController
      *
      * Redirects to the entity form.
      *
-     * @param RequestStack $requestStack
+     * @param 
      * @param         $id
      * @param         $property
      *
@@ -657,10 +657,10 @@ abstract class CrudController extends BaseController
      *                                                                       class.
      * @throws \Exception If $property setter does not exists on class
      */
-    protected function doDeleteFile(RequestStack $requestStack, $id, $property)
+    protected function doDeleteFile($id, $property)
     {
         $entity = $this->getRepository($this->getEntity())->find($id);
-        $requestStack = $requestStack->getCurrentRequest();
+        
 
         if (!$entity) {
             throw new NotFoundHttpException(
@@ -694,7 +694,7 @@ abstract class CrudController extends BaseController
             $this->persistAndFlush($entity);
         }
 
-        if (!$requestStack->isXmlHttpRequest()) {
+        if (!$this->getRequestStack()->isXmlHttpRequest()) {
             $this->addSuccessFlash('bigfoot_core.flash.delete_file.confirm');
 
             return $this->redirect($this->generateUrl($this->getRouteNameForAction('edit'), array('id' => $id)));
@@ -708,16 +708,16 @@ abstract class CrudController extends BaseController
      *
      * Redirects to the index action.
      *
-     * @param RequestStack $requestStack
+     * @param 
      * @param         $id
      *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException If no entity with id $id is found.
      */
-    protected function doDuplicate(RequestStack $requestStack, $id)
+    protected function doDuplicate($id)
     {
         $entity = $this->getRepository($this->getEntity())->find($id);
-        $requestStack = $requestStack->getCurrentRequest();
+        
 
         if (!$entity) {
             throw new NotFoundHttpException(

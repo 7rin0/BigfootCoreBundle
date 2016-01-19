@@ -12,7 +12,7 @@
 {% endblock phpdoc_method_annotations %}
  */
 {% block method_definition %}
-    public function createAction(RequestStack $requestStack)
+    public function createAction()
 {% endblock method_definition %}
     {
 {% block method_body %}
@@ -22,7 +22,7 @@
     {% if 'annotation' == format %}
     return $this->doCreate($requestStack);
     {% else %}
-    return $this->container->get('templating')->renderResponse('BigfootCoreBundle:crud:new.html.twig', $this->doCreate($request));
+    return $this->container->get('templating')->renderResponse('BigfootCoreBundle:crud:new.html.twig', $this->doCreate());
     {% endif %}
 {% endblock method_return %}
 }

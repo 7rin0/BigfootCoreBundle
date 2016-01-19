@@ -30,18 +30,17 @@ class SettingsController extends BaseController
      *
      * @return array
      */
-    public function globalAction(Request $request)
+    public function globalAction()
     {
         $settings = $this->getRepository('BigfootCoreBundle:Settings')->findAll();
         $settings = !empty($settings) ? current($settings) : null;
-
         $form = $this->createForm(
             get_class($this->get('bigfoot_core.form.type.settings')),
             !empty($settings) ? $settings->getSettings() : null
         );
 
-        if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
+        if ($this->getRequestStack()->isMethod('POST')) {
+            $form->handleRequest($this->getRequestStack());
 
             $datas = $form->getData();
 

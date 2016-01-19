@@ -126,7 +126,7 @@ class TranslatableLabelController extends CrudController
      *
      * @Route("/{id}/edit", name="admin_translatable_label_edit")
      */
-    public function editAction(RequestStack $requestStack, $id)
+    public function editAction($id)
     {
         return $this->doEdit($requestStack->getCurrentRequest(), $id);
     }
