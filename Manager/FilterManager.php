@@ -8,6 +8,7 @@ use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 /**
@@ -63,7 +64,7 @@ class FilterManager
         $this->formFactory   = $formFactory;
         $this->entityManager = $entityManager;
         $this->session       = $session;
-        $this->request       = $request;
+        $this->requestStack       = $requestStack->getCurrentRequest();
 
         $this->joins         = array();
         $this->wheres        = array();
@@ -106,7 +107,7 @@ class FilterManager
     public function registerFilters($entityName, $globalFilters)
     {
         $form = $this->generateFilters($globalFilters, $entityName);
-        $form->submit($this->request);
+        $form->submit($this->requestStack);
 
         $datas   = $form->getData();
         $filters = $globalFilters['fields'];

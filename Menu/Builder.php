@@ -4,6 +4,7 @@ namespace Bigfoot\Bundle\CoreBundle\Menu;
 
 use Bigfoot\Bundle\CoreBundle\Event\MenuEvent;
 use Doctrine\ORM\EntityManager;
+use Knp\Menu\MenuItem;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -52,13 +53,9 @@ class Builder
     }
 
     /**
-     * Create main menu
-     *
-     * @param  RequestStack $requestStack
-     *
-     * @return Menu
+     * @return MenuItem
      */
-    public function createMainMenu(RequestStack $requestStack)
+    public function createMainMenu()
     {
         $builder = $this
             ->menuManager
@@ -110,23 +107,10 @@ class Builder
 
         $this->eventDispatcher->dispatch(MenuEvent::GENERATE_MAIN, new GenericEvent($builder));
         $this->eventDispatcher->dispatch(MenuEvent::TERMINATE, new GenericEvent($builder));
-
         $menu = $builder->createMenu();
-
         $this->eventDispatcher->dispatch(MenuEvent::RENDER_MENU, new GenericEvent($menu));
 
         return $menu;
-    }
-
-    /**
-     * Create test menu
-     *
-     * @param  RequestStack $requestStack
-     *
-     * @return Menu
-     */
-    public function createTestMenu(RequestStack $requestStack)
-    {
     }
 
     /**

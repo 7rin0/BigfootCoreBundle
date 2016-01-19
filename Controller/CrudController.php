@@ -436,11 +436,11 @@ abstract class CrudController extends BaseController
      *
      * @return array An array containing the entities.
      */
-    protected function doIndex(Request $request)
+    protected function doIndex()
     {
         $filterManager = $this->getFilterManager();
 
-        if ($request->isMethod('POST')) {
+        if ($this->getRequestStack()->isMethod('POST')) {
             $filterManager->registerFilters($this->getEntityName(), $this->getGlobalFilters());
 
             return $this->redirect($this->generateUrl($this->getControllerIndex()));
@@ -450,7 +450,7 @@ abstract class CrudController extends BaseController
         $defaultSort = $this->getDefaultSort();
         // les configs knp_paginator.default_options.sort_field_name et sort_direction_name sont intégrées dans le service knp_paginator,
         // dans une propriété protected sans getter, donc on ne peut pas récupérer les valeurs
-        if ($request->query->get('sort') == null && is_array($defaultSort)) {
+        if ($this->getRequestStack()->query->get('sort') == null && is_array($defaultSort)) {
             // Knp\Component\Pager\Event\Subscriber\Sortable\Doctrine\ORM\QuerySubscriber lit ses valeurs dans $_GET, donc, on les écrit là, sans passer par Request
             $_GET['sort'] = $defaultSort['sort'];
             $_GET['direction'] = (array_key_exists('direction', $defaultSort)) ? $defaultSort['direction'] : 'asc';
@@ -777,7 +777,7 @@ abstract class CrudController extends BaseController
         $paginatorParams = array();
         // les configs knp_paginator.default_options.sort_field_name et sort_direction_name sont intégrées dans le service knp_paginator,
         // dans une propriété protected sans getter, donc on ne peut pas récupérer les valeurs
-        if ($request->query->get('sort') == null && is_array($defaultSort)) {
+        if ($this->getRequestStack()->query->get('sort') == null && is_array($defaultSort)) {
             $paginatorParams['sort'] = $defaultSort['sort'];
             $paginatorParams['direction'] = (array_key_exists('direction', $defaultSort)) ? $defaultSort['direction'] : 'asc';
         }
@@ -818,7 +818,7 @@ abstract class CrudController extends BaseController
                 'form_submit' => 'bigfoot_core.crud.submit',
                 'form_cancel' => $this->getRouteNameForAction('index'),
                 'entity'      => $entity,
-                'layout'      => $request->query->get('layout') ?: '',
+                'layout'      => $this->getRequestStack()->query->get('layout') ?: '',
                 'form_name'   => $this->getName(),
             )
         );
@@ -1025,5 +1025,16 @@ abstract class CrudController extends BaseController
         }
 
         return null;
+    }
+
+    /**
+     * @return null|Request
+     */
+    protected function getRequestStack()
+    {
+        $requestStack = $this->get('request_stack');
+        if($requestStack) {
+            return $requestStack->getCurrentRequest();
+        }
     }
 }
