@@ -4,6 +4,7 @@ namespace Bigfoot\Bundle\CoreBundle\Form;
 
 use Bigfoot\Bundle\CoreBundle\Entity\TranslatableLabel;
 use Bigfoot\Bundle\CoreBundle\Entity\TranslatableLabelTranslation;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -71,7 +72,7 @@ class TranslatableLabelType extends AbstractTranslatableLabelType
 
                     $form->add(
                         'translations',
-                        'collection',
+                        CollectionType::class,
                         array(
                             'type' => 'bigfoot_bundle_corebundle_translatable_label_translationtype',
                             'label' => false,
