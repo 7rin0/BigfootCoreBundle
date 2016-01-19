@@ -3,7 +3,7 @@
 namespace Bigfoot\Bundle\CoreBundle\Manager;
 
 use Bigfoot\Bundle\CoreBundle\Entity\TranslatableLabel;
-use Doctrine\DBAL\Types\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
