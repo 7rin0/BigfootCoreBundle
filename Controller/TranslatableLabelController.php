@@ -6,7 +6,6 @@ use Bigfoot\Bundle\CoreBundle\Manager\TranslatableLabelManager;
 use Doctrine\ORM\Query;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * TranslatableLabel controller.

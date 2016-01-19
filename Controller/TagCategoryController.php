@@ -5,7 +5,6 @@ namespace Bigfoot\Bundle\CoreBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * TagCategory controller.

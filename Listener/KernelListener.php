@@ -4,7 +4,6 @@ namespace Bigfoot\Bundle\CoreBundle\Listener;
 
 use Bigfoot\Bundle\ContextBundle\Service\ContextService;
 use Gedmo\Translatable\TranslatableListener;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
