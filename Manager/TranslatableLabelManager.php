@@ -6,6 +6,7 @@ use Bigfoot\Bundle\CoreBundle\Entity\TranslatableLabel;
 use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Translation\Interval;
 
 class TranslatableLabelManager
@@ -36,7 +37,7 @@ class TranslatableLabelManager
             return 'bigfoot_richtext';
         }
 
-        return $label->isMultiline() ? 'textarea' : TextType::class;
+        return $label->isMultiline() ? TextareaType::class : TextType::class;
     }
 
     /**
