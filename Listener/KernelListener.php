@@ -4,6 +4,8 @@ namespace Bigfoot\Bundle\CoreBundle\Listener;
 
 use Bigfoot\Bundle\ContextBundle\Service\ContextService;
 use Gedmo\Translatable\TranslatableListener;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Kernel;
@@ -48,7 +50,7 @@ class KernelListener
     /**
      * @param GetResponseEvent $event
      */
-    public function onEarlyKernelRequest(GetResponseEvent $event)
+    public function onEarlyKernelRequest(GetResponseEvent $event, RequestStack $requestStack)
     {
         if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType() or !in_array(
                 $this->kernel->getEnvironment(),
@@ -58,26 +60,25 @@ class KernelListener
             return;
         }
 
-        $request = $event->getRequest();
         $locale  = $this->defaultBackLocale;
 
-        if (($guessedLocale = $request->getSession()->get('_locale', false)) && in_array(
+        if ($requestStack && ($guessedLocale = $requestStack->getCurrentRequest()->getSession()->get('_locale', false)) && in_array(
                 $guessedLocale,
                 $this->allowedLocales
             )
         ) {
             $locale = $guessedLocale;
-        } elseif (($guessedLocale = $request->getPreferredLanguage()) && in_array(
+        } elseif (($guessedLocale = $requestStack->getCurrentRequest()->getPreferredLanguage()) && in_array(
                 $guessedLocale,
                 $this->allowedLocales
             )
         ) {
             $locale = $guessedLocale;
         } else {
-            $request->setLocale($this->defaultBackLocale);
+            $requestStack->getCurrentRequest()->setLocale($this->defaultBackLocale);
         }
 
-        $request->setLocale($locale);
+        $requestStack->getCurrentRequest()->setLocale($locale);
     }
 
     /**

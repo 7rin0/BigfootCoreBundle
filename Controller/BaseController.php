@@ -13,6 +13,7 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\Translation\Translator;
@@ -88,14 +89,14 @@ class BaseController extends Controller
      *
      * @return \Knp\Component\Pager\Pagination\PaginationInterface
      */
-    protected function getPagination($query, $elementsPerPage)
+    protected function getPagination($query, $elementsPerPage, Request $request)
     {
         /** @var Paginator $paginator */
         $paginator = $this->get('knp_paginator');
 
         return $paginator->paginate(
             $query,
-            $this->getRequest()->query->get('page', 1),
+            $request->query->get('page', 1),
             $elementsPerPage,
             array('distinct' => false)
         );

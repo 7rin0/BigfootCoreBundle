@@ -4,6 +4,7 @@ namespace Bigfoot\Bundle\CoreBundle\Controller;
 
 use Bigfoot\Bundle\CoreBundle\Manager\FilterManager;
 use Doctrine\ORM\Query;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -435,9 +436,8 @@ abstract class CrudController extends BaseController
      *
      * @return array An array containing the entities.
      */
-    protected function doIndex()
+    protected function doIndex(Request $request)
     {
-        $request       = $this->getRequest();
         $filterManager = $this->getFilterManager();
 
         if ($request->isMethod('POST')) {
@@ -450,7 +450,7 @@ abstract class CrudController extends BaseController
         $defaultSort = $this->getDefaultSort();
         // les configs knp_paginator.default_options.sort_field_name et sort_direction_name sont intégrées dans le service knp_paginator,
         // dans une propriété protected sans getter, donc on ne peut pas récupérer les valeurs
-        if ($this->getRequest()->query->get('sort') == null && is_array($defaultSort)) {
+        if ($request->query->get('sort') == null && is_array($defaultSort)) {
             // Knp\Component\Pager\Event\Subscriber\Sortable\Doctrine\ORM\QuerySubscriber lit ses valeurs dans $_GET, donc, on les écrit là, sans passer par Request
             $_GET['sort'] = $defaultSort['sort'];
             $_GET['direction'] = (array_key_exists('direction', $defaultSort)) ? $defaultSort['direction'] : 'asc';
@@ -777,7 +777,7 @@ abstract class CrudController extends BaseController
         $paginatorParams = array();
         // les configs knp_paginator.default_options.sort_field_name et sort_direction_name sont intégrées dans le service knp_paginator,
         // dans une propriété protected sans getter, donc on ne peut pas récupérer les valeurs
-        if ($this->getRequest()->query->get('sort') == null && is_array($defaultSort)) {
+        if ($request->query->get('sort') == null && is_array($defaultSort)) {
             $paginatorParams['sort'] = $defaultSort['sort'];
             $paginatorParams['direction'] = (array_key_exists('direction', $defaultSort)) ? $defaultSort['direction'] : 'asc';
         }
@@ -818,7 +818,7 @@ abstract class CrudController extends BaseController
                 'form_submit' => 'bigfoot_core.crud.submit',
                 'form_cancel' => $this->getRouteNameForAction('index'),
                 'entity'      => $entity,
-                'layout'      => $this->getRequest()->query->get('layout') ?: '',
+                'layout'      => $request->query->get('layout') ?: '',
                 'form_name'   => $this->getName(),
             )
         );

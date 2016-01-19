@@ -6,6 +6,7 @@ use Bigfoot\Bundle\CoreBundle\Entity\Settings;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -21,7 +22,7 @@ class SettingsController extends BaseController
     /**
      * Globale settings action
      *
-     * @param RequestStack $requestStack
+     * @param Request $request
      *
      * @Route("/global", name="admin_settings_global")
      * @Template("BigfootCoreBundle:settings:form.html.twig")
@@ -29,7 +30,7 @@ class SettingsController extends BaseController
      *
      * @return array
      */
-    public function globalAction(RequestStack $requestStack = null)
+    public function globalAction(Request $request)
     {
         $settings = $this->getRepository('BigfootCoreBundle:Settings')->findAll();
         $settings = !empty($settings) ? current($settings) : null;
@@ -39,8 +40,8 @@ class SettingsController extends BaseController
             !empty($settings) ? $settings->getSettings() : null
         );
 
-        if (!$requestStack && $requestStack->getCurrentRequest()->isMethod('POST')) {
-            $form->handleRequest($requestStack);
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
 
             $datas = $form->getData();
 

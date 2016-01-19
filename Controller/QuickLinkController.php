@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
@@ -111,9 +112,9 @@ class QuickLinkController extends CrudController
      * @Route("/new", name="admin_quicklink_form_new")
      * @Template("BigfootCoreBundle:quicklink:popin.quicklink.html.twig")
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
-        $arrayNew = $this->doNew($this->getRequest());
+        $arrayNew = $this->doNew($request);
         $arrayNew['isAjax'] = true;
         $arrayNew['modal_title'] = 'bigfoot_core.quick_link.modal.title';
 
