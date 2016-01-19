@@ -8,6 +8,7 @@ use Doctrine\Common\Annotations\Reader;
 use Gedmo\Translatable\TranslatableListener;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\PropertyAccess\PropertyAccess;
@@ -110,7 +111,7 @@ class TranslationSubscriber implements EventSubscriberInterface
             $initialLocale      = ($parentData) ? $listener->getTranslatableLocale($parentData, $meta) : $this->defaultLocale;
             unset($locales[$initialLocale]);
 
-            $form->add('_entity_locale', 'hidden', array(
+            $form->add('_entity_locale', HiddenType::class, array(
                 'data' => $initialLocale,
                 'mapped' => false,
                 'attr' => array(
