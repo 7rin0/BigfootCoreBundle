@@ -3,6 +3,7 @@
 namespace Bigfoot\Bundle\CoreBundle\Manager;
 
 use Bigfoot\Bundle\CoreBundle\Entity\TranslatableLabelRepository;
+use Doctrine\DBAL\Types\TextType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -341,11 +342,11 @@ class FilterManager
                         throw new \Exception("You must define the attribute to display for entity ".$options['entity']);
                     }
 
-                    $type = isset($options['type']) ? $options['type'] : 'text';
+                    $type = isset($options['type']) ? $options['type'] : TextType::class;
 
                     $field['options']['type'] = $type;
 
-                    if ($type != 'text') {
+                    if ($type != TextType::class) {
                         $field['options']['choices'] = $this->getChoices($referer, $options['property']);
                     }
 

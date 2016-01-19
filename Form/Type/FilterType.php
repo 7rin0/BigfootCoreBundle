@@ -78,7 +78,7 @@ class FilterType extends AbstractType
                 );
             }
 
-            if (($filter['type'] == 'referer' && $options['type'] == 'text') || $filter['type'] == 'search') {
+            if (($filter['type'] == 'referer' && $options['type'] == TextType::class) || $filter['type'] == 'search') {
                 $builder->add(
                     $filter['name'],
                     TextType::class,
