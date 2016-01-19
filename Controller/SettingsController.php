@@ -6,6 +6,7 @@ use Bigfoot\Bundle\CoreBundle\Entity\Settings;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Settings Controller.
@@ -28,17 +29,17 @@ class SettingsController extends BaseController
      *
      * @return array
      */
-    public function globalAction(RequestStack $requestStack)
+    public function globalAction(RequestStack $requestStack = null)
     {
         $settings = $this->getRepository('BigfootCoreBundle:Settings')->findAll();
         $settings = !empty($settings) ? current($settings) : null;
 
         $form = $this->createForm(
-            $this->get('bigfoot_core.form.type.settings'),
+            get_class($this->get('bigfoot_core.form.type.settings')),
             !empty($settings) ? $settings->getSettings() : null
         );
 
-        if ($requestStack->isMethod('POST')) {
+        if (!$requestStack && $requestStack->getCurrentRequest()->isMethod('POST')) {
             $form->handleRequest($requestStack);
 
             $datas = $form->getData();
