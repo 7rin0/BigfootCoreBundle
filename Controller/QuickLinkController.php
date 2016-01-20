@@ -3,6 +3,7 @@
 namespace Bigfoot\Bundle\CoreBundle\Controller;
 
 use Bigfoot\Bundle\CoreBundle\Entity\QuickLink;
+use Bigfoot\Bundle\CoreBundle\Form\QuickLinkType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -95,7 +96,7 @@ class QuickLinkController extends CrudController
     public function quickLinkFormAction()
     {
         $form   = $this->createForm(
-            $this->get('bigfoot.form.type.quicklink'),
+            QuickLinkType::class,
             new QuickLink()
         );
 

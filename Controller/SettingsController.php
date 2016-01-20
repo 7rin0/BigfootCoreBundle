@@ -3,6 +3,7 @@
 namespace Bigfoot\Bundle\CoreBundle\Controller;
 
 use Bigfoot\Bundle\CoreBundle\Entity\Settings;
+use Bigfoot\Bundle\CoreBundle\Form\Type\SettingsType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -34,7 +35,7 @@ class SettingsController extends BaseController
         $settings = $this->getRepository('BigfootCoreBundle:Settings')->findAll();
         $settings = !empty($settings) ? current($settings) : null;
         $form = $this->createForm(
-            get_class($this->get('bigfoot_core.form.type.settings')),
+            SettingsType::class,
             !empty($settings) ? $settings->getSettings() : null
         );
 

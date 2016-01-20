@@ -53,12 +53,4 @@ class QuickLinkType extends AbstractType
             'data_class' => 'Bigfoot\Bundle\CoreBundle\Entity\QuickLink'
         ));
     }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'bigfoot_bundle_corebundle_quicklinktype';
-    }
 }

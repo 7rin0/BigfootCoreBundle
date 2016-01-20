@@ -54,14 +54,4 @@ class SettingsType extends AbstractType
             )
         );
     }
-
-    /**
-     * getName
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return 'bigfoot_core_settings_type';
-    }
 }
