@@ -66,7 +66,7 @@ class TranslatableLabelController extends CrudController
                 'placeholder' => 'Category',
                 'name'        => 'category',
                 'type'        => 'repositoryMethod',
-                'options' => array(
+                'entry_options' => array(
                     'method'        => 'addCategoryFilter',
                     'choicesMethod' => 'getCategories'
                 )
