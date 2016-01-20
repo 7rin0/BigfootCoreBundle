@@ -3,6 +3,7 @@
 namespace Bigfoot\Bundle\CoreBundle\Manager;
 
 use Bigfoot\Bundle\CoreBundle\Entity\TranslatableLabelRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\QueryBuilder;
@@ -125,7 +126,7 @@ class FilterManager
                 $data = $datas[$filter['name']];
 
                 switch ($filter['type']) {
-                    case 'entity':
+                    case EntityType::class:
                         $datas[$filter['name']] = $data->getId();
 
                         break;
@@ -165,7 +166,7 @@ class FilterManager
                             call_user_func(array($repo, $options['method']), $query, $data);
 
                             break;
-                        case 'entity':
+                        case EntityType::class:
                             $data = $this->getEntity($filter, $datas[$filter['name']]);
                             if ($alias = $this->hasJoin('e.'.$options['relation'])) {
                                 $this->deleteJoin('e.'.$options['relation']);
@@ -316,30 +317,30 @@ class FilterManager
                         throw new \Exception("You must define an array of choices");
                     }
                     if (!isset($options['property'])) {
-                        throw new \Exception("You must define the attribute to display for entity ".$options['entity']);
+                        throw new \Exception("You must define the attribute to display for entity ".$options[EntityType::class]);
                     }
 
                     $filters[] = $field;
                     break;
-                case 'entity':
+                case EntityType::class:
                     if (!isset($options['class'])) {
                         throw new \Exception("You must define the entity namesapce (ie. AcmeDemoBundle:Acme)");
                     }
                     if (!isset($options['relation'])) {
-                        throw new \Exception("You must define the relation between the entity to mapped and ".$options['entity']);
+                        throw new \Exception("You must define the relation between the entity to mapped and ".$options[EntityType::class]);
                     }
                     if (!isset($options['property'])) {
-                        throw new \Exception("You must define the attribute to display for entity ".$options['entity']);
+                        throw new \Exception("You must define the attribute to display for entity ".$options[EntityType::class]);
                     }
 
                     $filters[] = $field;
                     break;
                 case 'referer':
                     if (!is_string($referer) || !preg_match('/^.*:.*$/i', $referer)) {
-                        throw new \Exception("You must define the attribute to display for entity ".$options['entity']);
+                        throw new \Exception("You must define the attribute to display for entity ".$options[EntityType::class]);
                     }
                     if (!isset($options['property'])) {
-                        throw new \Exception("You must define the attribute to display for entity ".$options['entity']);
+                        throw new \Exception("You must define the attribute to display for entity ".$options[EntityType::class]);
                     }
 
                     $type = isset($options['type']) ? $options['type'] : TextType::class;
@@ -354,17 +355,17 @@ class FilterManager
                     break;
                 case 'search':
                     if (!isset($options['properties'])) {
-                        throw new \Exception("You must define an array of properties to search in for entity ".$options['entity']);
+                        throw new \Exception("You must define an array of properties to search in for entity ".$options[EntityType::class]);
                     }
                     if (!is_array($options['properties'])) {
-                        throw new \Exception("You must define an array of properties to search in for entity ".$options['entity']);
+                        throw new \Exception("You must define an array of properties to search in for entity ".$options[EntityType::class]);
                     }
 
                     $filters[] = $field;
                     break;
                 case 'date_min':
                     if (!isset($options['property'])) {
-                        throw new \Exception("You must define the attribute to display for entity ".$options['entity']);
+                        throw new \Exception("You must define the attribute to display for entity ".$options[EntityType::class]);
                     }
                     
                     $filters[] = $field;
@@ -372,7 +373,7 @@ class FilterManager
             }
         }
 
-        $form = $this->formFactory->create('bigfoot_core_filter_type', null, array('filters' => $filters, 'entity' => $key));
+        $form = $this->formFactory->create('bigfoot_core_filter_type', null, array('filters' => $filters, EntityType::class => $key));
 
         return $form;
     }

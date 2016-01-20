@@ -4,6 +4,7 @@ namespace Bigfoot\Bundle\CoreBundle\Controller;
 
 use Bigfoot\Bundle\CoreBundle\Manager\FilterManager;
 use Doctrine\ORM\Query;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -160,7 +161,7 @@ abstract class CrudController extends BaseController
     {
         if (!$this->entityName) {
             $names            = $this->getBundleAndEntityName();
-            $this->entityName = $names['entity'];
+            $this->entityName = $names[EntityType::class];
         }
 
         return $this->entityName;
@@ -257,7 +258,7 @@ abstract class CrudController extends BaseController
             );
         }
 
-        return array('bundle' => $bundleName, 'entity' => $entityName);
+        return array('bundle' => $bundleName, EntityType::class => $entityName);
     }
 
     /**
@@ -816,7 +817,7 @@ abstract class CrudController extends BaseController
                 'form_action' => $action,
                 'form_submit' => 'bigfoot_core.crud.submit',
                 'form_cancel' => $this->getRouteNameForAction('index'),
-                'entity'      => $entity,
+                EntityType::class      => $entity,
                 'layout'      => $this->getRequestStack()->query->get('layout') ?: '',
                 'form_name'   => $this->getName(),
             )
@@ -1017,7 +1018,7 @@ abstract class CrudController extends BaseController
             return array(
                 'route'      => 'admin_csv_generate',
                 'parameters' => array(
-                    'entity' => base64_encode($this->getEntity()),
+                    EntityType::class => base64_encode($this->getEntity()),
                     'fields' => base64_encode(serialize($this->getCsvFields()))
                 )
             );

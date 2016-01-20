@@ -3,6 +3,7 @@
 namespace Bigfoot\Bundle\CoreBundle\Form\Type;
 
 use Bigfoot\Bundle\CoreBundle\Manager\FilterManager;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -38,7 +39,7 @@ class FilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $filters = $options['filters'];
-        $entity  = $options['entity'];
+        $entity  = $options[EntityType::class];
 
         $datas   = $this->manager->getSessionFilter($entity);
 
@@ -59,14 +60,14 @@ class FilterType extends AbstractType
                 );
             }
 
-            if ($filter['type'] == 'entity') {
+            if ($filter['type'] == EntityType::class) {
                 if (!empty($value)) {
                     $value = $this->manager->getEntity($filter, $value);
                 }
 
                 $builder->add(
                     $filter['name'],
-                    'entity',
+                    EntityType::class,
                     array(
                         'class'         => $options['class'],
                         'property'      => $options['property'],
@@ -113,7 +114,7 @@ class FilterType extends AbstractType
             array(
                 'data_class' => null,
                 'filters'    => array(),
-                'entity'     => null
+                EntityType::class     => null
             )
         );
     }
