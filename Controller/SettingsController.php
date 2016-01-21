@@ -22,8 +22,6 @@ class SettingsController extends BaseController
     /**
      * Globale settings action
      *
-     * @param Request $request
-     *
      * @Route("/global", name="admin_settings_global")
      * @Template("BigfootCoreBundle:settings:form.html.twig")
      * @method({"GET", "POST"})
