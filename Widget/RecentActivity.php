@@ -26,8 +26,8 @@ class RecentActivity extends AbstractWidget
         $yesterday->sub(new \DateInterval('P1D'));
 
         foreach ($tabs as $tab) {
-            if ($this->entityCanBeFollow($tab[EntityType::class])) {
-                $queryBuilder = $em->getRepository($tab[EntityType::class])->createQueryBuilder('e')
+            if ($this->entityCanBeFollow($tab['entity'])) {
+                $queryBuilder = $em->getRepository($tab['entity'])->createQueryBuilder('e')
                     ->where('e.updated >= '.$dateHistory->format('Y-m-d'));
                 $query = $queryBuilder->getQuery();
                 $entities = $query->getResult();

@@ -161,7 +161,7 @@ abstract class CrudController extends BaseController
     {
         if (!$this->entityName) {
             $names            = $this->getBundleAndEntityName();
-            $this->entityName = $names[EntityType::class];
+            $this->entityName = $names['entity'];
         }
 
         return $this->entityName;
@@ -258,7 +258,7 @@ abstract class CrudController extends BaseController
             );
         }
 
-        return array('bundle' => $bundleName, EntityType::class => $entityName);
+        return array('bundle' => $bundleName, 'entity' => $entityName);
     }
 
     /**
@@ -817,7 +817,7 @@ abstract class CrudController extends BaseController
                 'form_action' => $action,
                 'form_submit' => 'bigfoot_core.crud.submit',
                 'form_cancel' => $this->getRouteNameForAction('index'),
-                EntityType::class      => $entity,
+                'entity'      => $entity,
                 'layout'      => $this->getRequestStack()->query->get('layout') ?: '',
                 'form_name'   => $this->getName(),
             )
@@ -1018,7 +1018,7 @@ abstract class CrudController extends BaseController
             return array(
                 'route'      => 'admin_csv_generate',
                 'parameters' => array(
-                    EntityType::class => base64_encode($this->getEntity()),
+                    'entity' => base64_encode($this->getEntity()),
                     'fields' => base64_encode(serialize($this->getCsvFields()))
                 )
             );

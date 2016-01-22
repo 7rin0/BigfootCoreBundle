@@ -24,7 +24,7 @@ class GenerateCrudCommand extends GenerateDoctrineCrudCommand
     {
         $this
             ->setDefinition(array(
-                new InputOption(EntityType::class, '', InputOption::VALUE_REQUIRED, 'The entity class name to initialize (shortcut notation)'),
+                new InputOption('entity', '', InputOption::VALUE_REQUIRED, 'The entity class name to initialize (shortcut notation)'),
                 new InputOption('route-prefix', '', InputOption::VALUE_REQUIRED, 'The route prefix'),
                 new InputOption('with-write', '', InputOption::VALUE_NONE, 'Whether or not to generate create, new and delete actions'),
                 new InputOption('format', '', InputOption::VALUE_REQUIRED, 'Use the format for configuration files (php, xml, yml, or annotation)', 'annotation'),

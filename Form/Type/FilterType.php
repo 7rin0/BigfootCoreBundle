@@ -39,7 +39,7 @@ class FilterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $filters = $options['filters'];
-        $entity  = $options[EntityType::class];
+        $entity  = $options['entity'];
 
         $datas   = $this->manager->getSessionFilter($entity);
 
@@ -60,7 +60,7 @@ class FilterType extends AbstractType
                 );
             }
 
-            if ($filter['type'] == EntityType::class) {
+            if ($filter['type'] == 'entity') {
                 if (!empty($value)) {
                     $value = $this->manager->getEntity($filter, $value);
                 }
@@ -114,7 +114,7 @@ class FilterType extends AbstractType
             array(
                 'data_class' => null,
                 'filters'    => array(),
-                EntityType::class     => null
+                'entity'     => null
             )
         );
     }
