@@ -491,7 +491,7 @@ abstract class CrudController extends BaseController
     {
         $entityClass = $this->getEntityClass();
         $entity      = new $entityClass();
-        $form        = $this->createForm($this->getFormType(), $entity);
+        $form        = $this->createForm(get_class($this->getFormType()), $entity);
         
         $action      = $this->generateUrl(
             $this->getRouteNameForAction('new'),
@@ -560,7 +560,7 @@ abstract class CrudController extends BaseController
             );
         }
 
-        $form   = $this->createForm($this->getFormType(), $entity);
+        $form   = $this->createForm(get_class($this->getFormType()), $entity);
         $action = $this->generateUrl(
             $this->getRouteNameForAction('edit'),
             array('id' => $entity->getId(), 'layout' => $this->getRequestStack()->get('layout', null))
