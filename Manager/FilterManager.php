@@ -3,6 +3,7 @@
 namespace Bigfoot\Bundle\CoreBundle\Manager;
 
 use Bigfoot\Bundle\CoreBundle\Entity\TranslatableLabelRepository;
+use Bigfoot\Bundle\CoreBundle\Form\Type\FilterType;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -372,7 +373,7 @@ class FilterManager
             }
         }
 
-        $form = $this->formFactory->create('bigfoot_core_filter_type', null, array('filters' => $filters, 'entity' => $key));
+        $form = $this->formFactory->create(FilterType::class, null, array('filters' => $filters, 'entity' => $key));
 
         return $form;
     }

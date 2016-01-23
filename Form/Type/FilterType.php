@@ -127,12 +127,4 @@ class FilterType extends AbstractType
     {
         return $options;
     }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'bigfoot_core_filter_type';
-    }
 }
