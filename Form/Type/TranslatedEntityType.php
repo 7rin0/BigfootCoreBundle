@@ -36,7 +36,7 @@ class TranslatedEntityType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('translatedEntity', HiddenType::class );
+        $builder->add('translatedEntity', HiddenType::class);
         $builder->addEventSubscriber($this->translationSubscriber);
     }
 

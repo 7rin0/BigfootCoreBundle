@@ -22,7 +22,7 @@ class BigfootRichtextType extends AbstractType
         $resolver->setDefaults(
             array(
                 'attr'  => array(
-                    'class' => 'ckeditor',
+                    'class' => 'ckeditor'
                 )
             )
         );
