@@ -6,6 +6,7 @@ use Bigfoot\Bundle\CoreBundle\Form\EventListener\TranslationSubscriber;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -17,21 +18,16 @@ class TranslatedEntityType extends AbstractType
     /** @var \Bigfoot\Bundle\CoreBundle\Form\EventListener\TranslationSubscriber */
     protected $translationSubscriber;
 
-    /** @var \Symfony\Component\HttpFoundation\Request */
-    protected $requestStack;
-
     /** @var array */
     protected $localeList;
 
     /**
      * @param TranslationSubscriber $translationSubscriber
-     * @param RequestStack $requestStack
-     * @param $localeList
+     * @param                       $localeList
      */
-    public function __construct(TranslationSubscriber $translationSubscriber, RequestStack $requestStack, $localeList)
+    public function __construct(TranslationSubscriber $translationSubscriber, $localeList)
     {
         $this->translationSubscriber = $translationSubscriber;
-        $this->request               = $request;
         $this->localeList            = $localeList;
     }
 
@@ -67,13 +63,5 @@ class TranslatedEntityType extends AbstractType
     public function getDefaultOptions(array $options = array())
     {
         return $options;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'translatable_entity';
     }
 }

@@ -35,14 +35,4 @@ class BigfootRichtextType extends AbstractType
     {
         return TextareaType::class;
     }
-
-    /**
-     * Returns the name of this type.
-     *
-     * @return string The name of this type
-     */
-    public function getName()
-    {
-        return 'bigfoot_richtext';
-    }
 }
