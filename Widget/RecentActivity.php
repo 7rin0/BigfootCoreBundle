@@ -3,7 +3,6 @@
 namespace Bigfoot\Bundle\CoreBundle\Widget;
 
 use Bigfoot\Bundle\CoreBundle\Model\AbstractWidget;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class RecentActivity extends AbstractWidget
 {

@@ -4,7 +4,6 @@ namespace Bigfoot\Bundle\CoreBundle\Command\Bigfoot;
 
 use Bigfoot\Bundle\CoreBundle\Generator\BigfootCrudGenerator;
 use Sensio\Bundle\GeneratorBundle\Command\GenerateDoctrineCrudCommand;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 

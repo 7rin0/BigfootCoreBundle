@@ -151,7 +151,7 @@ class TranslationSubscriber implements EventSubscriberInterface
                         $fieldAttr = $parentForm->get($fieldName)->getConfig()->getOption('attr');
                         $form->add(
                             sprintf('%s-%s', $fieldName, $locale),
-                            $fieldType,
+                            get_class($fieldType),
                             array(
                                 'data'     => $data,
                                 'required' => false,
