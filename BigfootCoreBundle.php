@@ -15,6 +15,9 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class BigfootCoreBundle extends Bundle
 {
+    /**
+     * @param ContainerBuilder $container
+     */
     public function build(ContainerBuilder $container)
     {
         parent::build($container);

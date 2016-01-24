@@ -16,6 +16,8 @@ class TranslatableLabelRepository extends EntityRepository
     /**
      * @param $locale
      * @param $domain
+     *
+     * @return mixed
      */
     public function findAllForLocaleAndDomain($locale, $domain)
     {
@@ -39,6 +41,9 @@ class TranslatableLabelRepository extends EntityRepository
             ->getArrayResult();
     }
 
+    /**
+     * @return array
+     */
     public function getCategories()
     {
         $qb = $this->createQueryBuilder('e');
@@ -66,6 +71,12 @@ class TranslatableLabelRepository extends EntityRepository
         return $toReturn;
     }
 
+    /**
+     * @param QueryBuilder $query
+     * @param              $search
+     *
+     * @return QueryBuilder
+     */
     public function addCategoryFilter(QueryBuilder $query, $search)
     {
         $search .= '.%';

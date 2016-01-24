@@ -14,7 +14,9 @@ class File
     private $filePathProperty;
 
     /**
-     * @param array $options
+     * @param $options
+     *
+     * @throws \Exception
      */
     public function __construct($options)
     {
@@ -25,9 +27,11 @@ class File
         }
     }
 
+    /**
+     * @return string
+     */
     public function getFilePathProperty()
     {
         return $this->filePathProperty;
     }
-
 }

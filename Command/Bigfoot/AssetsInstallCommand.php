@@ -41,9 +41,17 @@ EOT
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
     }
 
+    /**
+     * @param                 $name
+     * @param ArrayInput      $input
+     * @param OutputInterface $output
+     *
+     * @return int
+     * @throws \Exception
+     * @throws \Symfony\Component\Console\Exception\ExceptionInterface
+     */
     protected function runCommand($name, ArrayInput $input, OutputInterface $output)
     {
         $command = $this->getApplication()->find($name);

@@ -30,6 +30,9 @@ class RouteController extends CrudController
         return 'BigfootCoreBundle:Route';
     }
 
+    /**
+     * @return array
+     */
     protected function getFields()
     {
         return array(
@@ -45,6 +48,9 @@ class RouteController extends CrudController
         );
     }
 
+    /**
+     * @return mixed
+     */
     protected function getFormType()
     {
         return RouteType::class;

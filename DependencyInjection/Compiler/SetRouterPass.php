@@ -12,6 +12,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class SetRouterPass implements CompilerPassInterface
 {
+    /**
+     * @param ContainerBuilder $container
+     */
     public function process(ContainerBuilder $container)
     {
         if ($container->hasParameter('bigfoot_core.routing.replace_symfony_router') && true === $container->getParameter('bigfoot_core.routing.replace_symfony_router')) {

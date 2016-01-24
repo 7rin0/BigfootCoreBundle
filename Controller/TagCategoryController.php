@@ -30,6 +30,9 @@ class TagCategoryController extends CrudController
         return 'BigfootCoreBundle:TagCategory';
     }
 
+    /**
+     * @return array
+     */
     protected function getFields()
     {
         return array(
@@ -38,11 +41,17 @@ class TagCategoryController extends CrudController
         );
     }
 
+    /**
+     * @return string
+     */
     public function getEntityLabel()
     {
         return 'bigfoot_core.controller.admin_tag_category.entity.label';
     }
 
+    /**
+     * @return string
+     */
     protected function getEntityLabelPlural()
     {
         return 'bigfoot_core.controller.admin_tag_category.entity.label_plural';

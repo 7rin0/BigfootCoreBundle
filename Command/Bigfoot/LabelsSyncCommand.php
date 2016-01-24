@@ -16,6 +16,11 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Yaml\Yaml;
 
+/**
+ * Class LabelsSyncCommand
+ *
+ * @package Bigfoot\Bundle\CoreBundle\Command\Bigfoot
+ */
 class LabelsSyncCommand extends BaseCommand
 {
     /**

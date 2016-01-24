@@ -15,7 +15,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
  */
 class QuickLinkController extends CrudController
 {
-
+    /**
+     * @return string
+     */
     protected function getName()
     {
         return 'admin_quicklink_form';
@@ -44,6 +46,9 @@ class QuickLinkController extends CrudController
         );
     }
 
+    /**
+     * @return mixed
+     */
     protected function getFormType()
     {
         return QuickLinkType::class;

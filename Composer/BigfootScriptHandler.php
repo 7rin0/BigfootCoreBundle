@@ -5,8 +5,16 @@ namespace Bigfoot\Bundle\CoreBundle\Composer;
 use Composer\Script\CommandEvent;
 use Sensio\Bundle\DistributionBundle\Composer\ScriptHandler;
 
+/**
+ * Class BigfootScriptHandler
+ *
+ * @package Bigfoot\Bundle\CoreBundle\Composer
+ */
 class BigfootScriptHandler extends ScriptHandler
 {
+    /**
+     * @param CommandEvent $event
+     */
     public static function clearCache(CommandEvent $event)
     {
         $options = self::getOptions($event);
@@ -28,6 +36,9 @@ class BigfootScriptHandler extends ScriptHandler
         static::executeCommand($event, $appDir, $cmd, $options['process-timeout']);
     }
 
+    /**
+     * @param CommandEvent $event
+     */
     public static function installAssets(CommandEvent $event)
     {
         $options = self::getOptions($event);

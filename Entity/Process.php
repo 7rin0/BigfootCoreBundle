@@ -16,8 +16,17 @@ use JMS\Serializer\Annotation as Serializer;
  */
 class Process
 {
+    /**
+     *
+     */
     const STATUS_ONGOING = 1;
+    /**
+     *
+     */
     const STATUS_SUCCESS = 2;
+    /**
+     *
+     */
     const STATUS_ERROR = 3;
 
     /**

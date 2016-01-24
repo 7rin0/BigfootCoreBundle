@@ -60,6 +60,11 @@ EOT
         ;
     }
 
+    /**
+     * @param BundleInterface $bundle
+     *
+     * @return array
+     */
     protected function getSkeletonDirs(BundleInterface $bundle = null)
     {
         $skeletonDirs = array();
@@ -78,8 +83,14 @@ EOT
         return $skeletonDirs;
     }
 
+    /**
+     * @param null $bundle
+     *
+     * @return BigfootCrudGenerator
+     */
     protected function createGenerator($bundle = null)
     {
+        // TODO
         return new BigfootCrudGenerator($this->getContainer()->get('filesystem'));
     }
 }

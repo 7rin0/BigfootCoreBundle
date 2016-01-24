@@ -8,6 +8,11 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Class ConvertCommand
+ *
+ * @package Bigfoot\Bundle\CoreBundle\Command\Bigfoot
+ */
 class ConvertCommand extends BaseCommand
 {
 
@@ -88,5 +93,4 @@ class ConvertCommand extends BaseCommand
             $output->writeln('Pour effectuer la convertion finale, il faut ajouter l\'option --force.');
         }
     }
-
 }

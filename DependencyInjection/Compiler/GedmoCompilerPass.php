@@ -10,6 +10,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  */
 class GedmoCompilerPass implements CompilerPassInterface
 {
+    /**
+     * @param ContainerBuilder $container
+     */
     public function process(ContainerBuilder $container)
     {
         if (!in_array($container->getParameterBag()->get('kernel.environment'), array('admin', 'admin_dev'))) {

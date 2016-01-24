@@ -14,6 +14,15 @@ use Symfony\Component\HttpKernel\Bundle\BundleInterface;
  */
 class BigfootCrudGenerator extends DoctrineCrudGenerator
 {
+    /**
+     * @param BundleInterface   $bundle
+     * @param string            $entity
+     * @param ClassMetadataInfo $metadata
+     * @param string            $format
+     * @param string            $routePrefix
+     * @param array             $needWriteActions
+     * @param                   $forceOverwrite
+     */
     public function generate(BundleInterface $bundle, $entity, ClassMetadataInfo $metadata, $format, $routePrefix, $needWriteActions, $forceOverwrite)
     {
         $this->routePrefix     = $routePrefix;
@@ -49,7 +58,7 @@ class BigfootCrudGenerator extends DoctrineCrudGenerator
      *
      * @param string $format The configuration format
      */
-    private function setFormat($format)
+    public function setFormat($format)
     {
         switch ($format) {
             case 'yml':

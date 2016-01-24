@@ -59,6 +59,9 @@ class Widget
      */
     private $translations;
 
+    /**
+     *
+     */
     public function __construct()
     {
         $this->translations = new ArrayCollection();

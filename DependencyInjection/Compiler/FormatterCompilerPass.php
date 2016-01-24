@@ -6,8 +6,16 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
+/**
+ * Class FormatterCompilerPass
+ *
+ * @package Bigfoot\Bundle\CoreBundle\DependencyInjection\Compiler
+ */
 class FormatterCompilerPass implements CompilerPassInterface
 {
+    /**
+     * @param ContainerBuilder $container
+     */
     public function process(ContainerBuilder $container)
     {
         if (!$container->hasDefinition('bigfoot_core.crud.formatter.loader')) {

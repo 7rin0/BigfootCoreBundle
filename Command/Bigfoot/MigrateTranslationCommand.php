@@ -8,6 +8,11 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
+/**
+ * Class MigrateTranslationCommand
+ *
+ * @package Bigfoot\Bundle\CoreBundle\Command\Bigfoot
+ */
 class MigrateTranslationCommand extends BaseCommand
 {
     /**
@@ -22,7 +27,7 @@ class MigrateTranslationCommand extends BaseCommand
     }
 
     /**
-     * @param InputInterface $input
+     * @param InputInterface  $input
      * @param OutputInterface $output
      */
     protected function execute(InputInterface $input, OutputInterface $output)
