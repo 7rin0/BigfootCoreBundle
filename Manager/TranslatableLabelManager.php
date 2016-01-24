@@ -10,6 +10,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Translation\Interval;
 
+/**
+ * Class TranslatableLabelManager
+ *
+ * @package Bigfoot\Bundle\CoreBundle\Manager
+ */
 class TranslatableLabelManager
 {
     /** @var string */
@@ -83,6 +88,9 @@ class TranslatableLabelManager
         return $standardRules;
     }
 
+    /**
+     * @return bool
+     */
     public function clearTranslationCache()
     {
         $fs = $this->filesystem;

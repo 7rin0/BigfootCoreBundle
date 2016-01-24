@@ -15,9 +15,7 @@ class SettingsManager
     private $settings;
 
     /**
-     * Constructor
-     *
-     * @param EntityManager $entityManager
+     * @param EntityManager $em
      */
     public function __construct(EntityManager $em)
     {

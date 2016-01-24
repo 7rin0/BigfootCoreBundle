@@ -8,15 +8,33 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Translation\Loader\LoaderInterface;
 use Symfony\Component\Translation\MessageCatalogue;
 
+/**
+ * Class DatabaseLoader
+ *
+ * @package Bigfoot\Bundle\CoreBundle\Translation
+ */
 class DatabaseLoader implements LoaderInterface
 {
+    /**
+     * @var EntityManager
+     */
     protected $entityManager;
 
+    /**
+     * @param EntityManager $entityManager
+     */
     public function __construct(EntityManager $entityManager)
     {
         $this->entityManager = $entityManager;
     }
 
+    /**
+     * @param mixed  $resource
+     * @param string $locale
+     * @param string $domain
+     *
+     * @return null|MessageCatalogue
+     */
     public function load($resource, $locale, $domain = 'messages')
     {
         $catalogue = null;

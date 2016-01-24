@@ -50,11 +50,9 @@ class MenuManager
     private $user;
 
     /**
-     * Constrcut
-     *
-     * @param FactoryInterface  $factory
-     * @param EntityManager     $entityManager
-     * @param Security   $security
+     * @param FactoryInterface $factory
+     * @param EntityManager    $entityManager
+     * @param TokenStorage     $security
      */
     public function __construct(FactoryInterface $factory, EntityManager $entityManager, TokenStorage $security)
     {
@@ -158,14 +156,13 @@ class MenuManager
     }
 
     /**
-     * Add child for
+     * @param       $parentSlug
+     * @param       $slug
+     * @param       $params
+     * @param array $options
      *
-     * @param string $parentSlug
-     * @param string $slug
-     * @param array  $params
-     * @param array  $options
-     *
-     * @return MenuManager
+     * @return $this
+     * @throws \Exception
      */
     public function addChildFor($parentSlug, $slug, $params, $options = array())
     {
@@ -225,11 +222,10 @@ class MenuManager
     }
 
     /**
-     * Create node
+     * @param $node
      *
-     * @param  stdClass $node
-     *
-     * @return mixed
+     * @return $this|bool|void
+     * @throws \Exception
      */
     public function createNode($node)
     {

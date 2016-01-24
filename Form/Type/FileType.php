@@ -17,7 +17,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class FileType extends AbstractType
 {
-
     /**
      * {@inheritDoc}
      */

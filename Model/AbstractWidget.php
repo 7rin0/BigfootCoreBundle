@@ -2,6 +2,11 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Model;
 
+/**
+ * Class AbstractWidget
+ *
+ * @package Bigfoot\Bundle\CoreBundle\Model
+ */
 abstract class AbstractWidget
 {
     /**
@@ -14,6 +19,9 @@ abstract class AbstractWidget
      */
     protected $title;
 
+    /**
+     * @var
+     */
     protected $id;
 
     /**

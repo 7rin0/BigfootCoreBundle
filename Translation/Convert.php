@@ -24,10 +24,10 @@ class Convert
     }
 
     /**
-     * Recherche récursive de tous les fichiers de traduction dans le répertoire donné
-     *
-     * @param string $dir
+     * @param       $dir
      * @param array $translationFiles
+     *
+     * @return null
      */
     protected function findTranslationFiles($dir, array &$translationFiles)
     {

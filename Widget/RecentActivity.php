@@ -4,15 +4,29 @@ namespace Bigfoot\Bundle\CoreBundle\Widget;
 
 use Bigfoot\Bundle\CoreBundle\Model\AbstractWidget;
 
+/**
+ * Class RecentActivity
+ *
+ * @package Bigfoot\Bundle\CoreBundle\Widget
+ */
 class RecentActivity extends AbstractWidget
 {
+    /**
+     * @var array
+     */
     public $tabs = array();
 
+    /**
+     * @return mixed
+     */
     public function renderContent()
     {
         return $this->container->get('templating')->render(sprintf('%s:widget:recentActivity.html.twig', $this->container->getParameter('bigfoot.theme.bundle')), array('widget' => $this));
     }
 
+    /**
+     * @return mixed
+     */
     public function render()
     {
         $em = $this->container->get('doctrine');
@@ -119,16 +133,34 @@ class RecentActivity extends AbstractWidget
         return parent::render();
     }
 
+    /**
+     * @param $entityName
+     *
+     * @return bool
+     */
     private function entityCanBeFollow($entityName)
     {
         return class_exists($entityName) && property_exists($entityName, 'created') && property_exists($entityName, 'updated') && property_exists($entityName, 'createdBy') && property_exists($entityName, 'updatedBy');
     }
 
+    /**
+     * @param        $tabKey
+     * @param        $tab
+     * @param string $type
+     *
+     * @return mixed
+     */
     private function renderTab($tabKey, $tab, $type = "")
     {
         return $this->container->get('templating')->render(sprintf('%s:widget:recentActivity.tab.html.twig', $this->container->getParameter('bigfoot.theme.bundle')), array('widget_id' => $this->getId(), 'tabKey' => $tabKey, 'tab' => $tab, 'type_tab' => $type));
     }
 
+    /**
+     * @param $t1
+     * @param $t2
+     *
+     * @return int
+     */
     private function sortTimeline($t1, $t2)
     {
         if ($t1['time'] == $t2['time']) {

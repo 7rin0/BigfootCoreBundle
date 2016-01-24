@@ -22,6 +22,9 @@ class FileExtension extends Twig_Extension
         $this->fileManager = $fileManager;
     }
 
+    /**
+     * @return array
+     */
     public function getFilters()
     {
         return array(

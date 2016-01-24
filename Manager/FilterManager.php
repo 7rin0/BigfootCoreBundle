@@ -55,12 +55,10 @@ class FilterManager
     private $index;
 
     /**
-     * Constructor
-     *
      * @param FormFactory   $formFactory
      * @param EntityManager $entityManager
      * @param Session       $session
-     * @param Request       $request
+     * @param RequestStack  $requestStack
      */
     public function __construct(FormFactory $formFactory, EntityManager $entityManager, Session $session, RequestStack $requestStack)
     {

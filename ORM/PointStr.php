@@ -11,13 +11,25 @@ use Doctrine\ORM\Query\Lexer;
  * Usage: POINT_STR(:param) where param should be mapped to $point where $point is Bigfoot\Bundle\CoreBundle\ORM\Point
  *        without any special typing provided (eg. so that it gets converted to string)
  */
-class PointStr extends FunctionNode {
+class PointStr extends FunctionNode
+{
+    /**
+     * @var
+     */
     private $arg;
 
+    /**
+     * @param \Doctrine\ORM\Query\SqlWalker $sqlWalker
+     *
+     * @return string
+     */
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker) {
         return 'GeomFromText(' . $this->arg->dispatch($sqlWalker) . ')';
     }
 
+    /**
+     * @param \Doctrine\ORM\Query\Parser $parser
+     */
     public function parse(\Doctrine\ORM\Query\Parser $parser) {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);

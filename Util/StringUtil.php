@@ -2,6 +2,11 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Util;
 
+/**
+ * Class StringUtil
+ *
+ * @package Bigfoot\Bundle\CoreBundle\Util
+ */
 class StringUtil
 {
     /**

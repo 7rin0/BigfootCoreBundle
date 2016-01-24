@@ -6,7 +6,6 @@ namespace Bigfoot\Bundle\CoreBundle\Exception;
  * Class InvalidArgumentException
  * @package Bigfoot\Bundle\CoreBundle\Exception
  */
-class InvalidArgumentException
-    extends \InvalidArgumentException
+class InvalidArgumentException extends \InvalidArgumentException
 {
 }

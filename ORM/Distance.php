@@ -10,10 +10,22 @@ use Doctrine\ORM\Query\Lexer;
  *
  * Example: DISTANCE(foo.point, POINT_STR(:param))
  */
-class Distance extends FunctionNode {
+class Distance extends FunctionNode
+{
+    /**
+     * @var
+     */
     private $firstArg;
+    /**
+     * @var
+     */
     private $secondArg;
 
+    /**
+     * @param \Doctrine\ORM\Query\SqlWalker $sqlWalker
+     *
+     * @return string
+     */
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker) {
         //Need to do this hacky linestring length thing because
         //despite what MySQL manual claims, DISTANCE isn't actually implemented...
@@ -24,6 +36,9 @@ class Distance extends FunctionNode {
             '))';
     }
 
+    /**
+     * @param \Doctrine\ORM\Query\Parser $parser
+     */
     public function parse(\Doctrine\ORM\Query\Parser $parser) {
         $parser->match(Lexer::T_IDENTIFIER);
         $parser->match(Lexer::T_OPEN_PARENTHESIS);

@@ -16,6 +16,9 @@ class DoctrineListener
     /** @var Bigfoot\Bundle\CoreBundle\Manager\FileManager  */
     private $fileManager;
 
+    /**
+     * @param FileManager $fileManager
+     */
     public function __construct(FileManager $fileManager)
     {
         $this->fileManager = $fileManager;
@@ -96,6 +99,11 @@ class DoctrineListener
         }
     }
 
+    /**
+     * @param $entity
+     *
+     * @return array
+     */
     private function getBigfootFileFields($entity)
     {
         $reader            = new AnnotationReader();

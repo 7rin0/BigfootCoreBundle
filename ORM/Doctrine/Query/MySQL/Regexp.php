@@ -23,11 +23,25 @@ namespace Bigfoot\Bundle\CoreBundle\ORM\Doctrine\Query\MySQL;
 use Doctrine\ORM\Query\AST\Functions\FunctionNode;
 use Doctrine\ORM\Query\Lexer;
 
+/**
+ * Class Regexp
+ *
+ * @package Bigfoot\Bundle\CoreBundle\ORM\Doctrine\Query\MySQL
+ */
 class Regexp extends FunctionNode
 {
+    /**
+     * @var null
+     */
     public $value  = null;
+    /**
+     * @var null
+     */
     public $regexp = null;
 
+    /**
+     * @param \Doctrine\ORM\Query\Parser $parser
+     */
     public function parse(\Doctrine\ORM\Query\Parser $parser)
     {
         $parser->match(Lexer::T_IDENTIFIER);
@@ -40,6 +54,11 @@ class Regexp extends FunctionNode
         $parser->match(Lexer::T_CLOSE_PARENTHESIS);
     }
 
+    /**
+     * @param \Doctrine\ORM\Query\SqlWalker $sqlWalker
+     *
+     * @return string
+     */
     public function getSql(\Doctrine\ORM\Query\SqlWalker $sqlWalker)
     {
         return '(' . $this->value->dispatch($sqlWalker) . ' REGEXP ' . $this->regexp->dispatch($sqlWalker) . ')';

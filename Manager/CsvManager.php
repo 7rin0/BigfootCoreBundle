@@ -72,9 +72,10 @@ class CsvManager
 
     /**
      * @param $entity
-     * @param $entitySelect
-     * @param $externalSelect
-     * @return mixed
+     * @param $entitySelections
+     * @param $externalSelections
+     *
+     * @return array
      */
     private function buildCsvQuery($entity, $entitySelections, $externalSelections)
     {
@@ -104,6 +105,12 @@ class CsvManager
         return $this->mergeClonedItem($csvArray);
     }
 
+    /**
+     * @param        $csvArray
+     * @param string $separator
+     *
+     * @return array
+     */
     private function mergeClonedItem($csvArray, $separator = ',')
     {
         $finalArray = array();
@@ -123,6 +130,11 @@ class CsvManager
         return $finalArray;
     }
 
+    /**
+     * @param $value
+     *
+     * @return string
+     */
     private function formatValue($value)
     {
         if ($value instanceof \DateTime) {

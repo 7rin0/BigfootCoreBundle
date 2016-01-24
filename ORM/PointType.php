@@ -8,7 +8,11 @@ use Doctrine\DBAL\Types\Type;
 /**
  * Mapping type for spatial POINT objects
  */
-class PointType extends Type {
+class PointType extends Type
+{
+    /**
+     *
+     */
     const POINT = 'point';
 
     /**
@@ -21,15 +25,21 @@ class PointType extends Type {
     }
 
     /**
-     * Gets the SQL declaration snippet for a field of this type.
+     * @param array            $fieldDeclaration
+     * @param AbstractPlatform $platform
      *
-     * @param array $fieldDeclaration The field declaration.
-     * @param AbstractPlatform $platform The currently used database platform.
+     * @return string
      */
     public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform) {
         return 'POINT';
     }
 
+    /**
+     * @param mixed            $value
+     * @param AbstractPlatform $platform
+     *
+     * @return Point|null
+     */
     public function convertToPHPValue($value, AbstractPlatform $platform) {
         //Null fields come in as empty strings
         if($value == '') {
@@ -40,6 +50,12 @@ class PointType extends Type {
         return new Point($data['lat'], $data['lon']);
     }
 
+    /**
+     * @param mixed            $value
+     * @param AbstractPlatform $platform
+     *
+     * @return string|void
+     */
     public function convertToDatabaseValue($value, AbstractPlatform $platform) {
         if (!$value) return;
 
