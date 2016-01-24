@@ -74,7 +74,7 @@ class TranslatableLabelType extends AbstractTranslatableLabelType
                         'translations',
                         CollectionType::class,
                         array(
-                            'entry_type' => 'bigfoot_bundle_corebundle_translatable_label_translationtype',
+                            'entry_type' => TranslatableLabelType::class,
                             'label' => false,
                         )
                     );
