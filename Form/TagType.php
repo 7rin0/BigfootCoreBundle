@@ -40,12 +40,4 @@ class TagType extends AbstractType
             'data_class' => 'Bigfoot\Bundle\CoreBundle\Entity\Tag'
         ));
     }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'bigfoot_bundle_corebundle_tagtype';
-    }
 }

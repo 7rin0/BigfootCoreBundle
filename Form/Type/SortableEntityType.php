@@ -35,12 +35,4 @@ class SortableEntityType extends AbstractType
             'data'      => 0
         ));
     }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'sortable_entity';
-    }
 }

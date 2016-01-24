@@ -64,14 +64,4 @@ class BigfootTagType extends AbstractType
     {
         return HiddenType::class;
     }
-
-    /**
-     * Returns the name of this type.
-     *
-     * @return string The name of this type
-     */
-    public function getName()
-    {
-        return 'bigfoot_tag';
-    }
 }

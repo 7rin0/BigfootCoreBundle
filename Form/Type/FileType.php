@@ -55,16 +55,8 @@ class FileType extends AbstractType
     /**
      * @return string
      */
-    public function getName()
-    {
-        return 'bigfoot_file';
-    }
-
-    /**
-     * @return string
-     */
     public function getParent()
     {
-        return 'file';
+        return FileType::class;
     }
 }

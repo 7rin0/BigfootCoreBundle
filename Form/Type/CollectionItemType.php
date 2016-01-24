@@ -17,14 +17,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class CollectionItemType extends AbstractType
 {
     /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'bigfoot_collection_item';
-    }
-
-    /**
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)

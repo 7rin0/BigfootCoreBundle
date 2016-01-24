@@ -11,11 +11,4 @@ use Symfony\Component\Form\AbstractType;
  */
 class SortableCollectionType extends AbstractType
 {
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'bigfoot_sortable_collection';
-    }
 }
