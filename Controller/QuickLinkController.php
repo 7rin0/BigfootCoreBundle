@@ -46,7 +46,7 @@ class QuickLinkController extends CrudController
 
     protected function getFormType()
     {
-        return 'bigfoot_bundle_corebundle_quicklinktype';
+        return QuickLinkType::class;
     }
 
     /**

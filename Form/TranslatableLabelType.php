@@ -126,12 +126,4 @@ class TranslatableLabelType extends AbstractTranslatableLabelType
             )
         );
     }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'bigfoot_bundle_corebundle_translatable_labeltype';
-    }
 }

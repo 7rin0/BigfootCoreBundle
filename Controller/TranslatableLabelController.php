@@ -2,6 +2,7 @@
 
 namespace Bigfoot\Bundle\CoreBundle\Controller;
 
+use Bigfoot\Bundle\CoreBundle\Form\TranslatableLabelType;
 use Bigfoot\Bundle\CoreBundle\Manager\TranslatableLabelManager;
 use Doctrine\ORM\Query;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
@@ -107,7 +108,7 @@ class TranslatableLabelController extends CrudController
      */
     protected function getFormType()
     {
-        return 'bigfoot_bundle_corebundle_translatable_labeltype';
+        return TranslatableLabelType::class;
     }
 
     /**

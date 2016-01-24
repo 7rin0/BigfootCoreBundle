@@ -217,7 +217,8 @@ abstract class CrudController extends BaseController
     {
         $formClass = $this->getEntityTypeClass();
 
-        return new $formClass();
+        return new $formClass;
+//        return new $formClass();
     }
 
     /**
