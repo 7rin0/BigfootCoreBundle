@@ -7,7 +7,7 @@ use Bigfoot\Bundle\CoreBundle\Command\BaseCommand;
 use Bigfoot\Bundle\CoreBundle\Entity\TranslatableLabel;
 use Bigfoot\Bundle\CoreBundle\Entity\TranslatableLabelRepository;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\Console\Helper\ProgressHelper;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -58,8 +58,8 @@ EOT
         $em = $this->getContainer()->get('doctrine')->getManager();
         /** @var TranslatableLabelRepository $repo */
         $repo = $em->getRepository('BigfootCoreBundle:TranslatableLabel');
-        /** @var ProgressHelper $progress */
-        $progress = $this->getHelperSet()->get('progress');
+        /** @var ProgressBar $progress */
+        $progress = new ProgressBar($output, 30);
         $transRepo = $this->getContainer()->get('bigfoot_core.translation.repository');
         /** @var ContextService $context */
         $context = $this->getContainer()->get('bigfoot_context');

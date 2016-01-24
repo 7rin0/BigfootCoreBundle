@@ -3,6 +3,7 @@
 namespace Bigfoot\Bundle\CoreBundle\Command\Bigfoot;
 
 use Bigfoot\Bundle\CoreBundle\Command\BaseCommand;
+use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -26,7 +27,8 @@ class MigrateTranslationCommand extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $progress  = $this->getHelper('progress');
+        $progress = new ProgressBar($output, 30);
+
         $entities  = $this->getContainer()->getParameter('bigfoot_migrate');
         $transRepo = $this->getContainer()->get('bigfoot_core.translation.repository');
 
