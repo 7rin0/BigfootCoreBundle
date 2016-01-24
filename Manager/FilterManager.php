@@ -292,6 +292,7 @@ class FilterManager
 
         foreach ($fields as $field) {
             $options = isset($field['options']) ? $field['options'] : array();
+            $options = empty($options) && isset($field['entry_options']) ? $field['entry_options'] : $options;
 
             switch ($field['type']) {
                 case 'repositoryMethod':
@@ -309,7 +310,7 @@ class FilterManager
 
                     $filters[] = $field;
                     break;
-                case ChoiceType::class:
+                case 'choice':
                     if (!isset($options['choices'])) {
                         throw new \Exception("You must define an array of choices");
                     }
