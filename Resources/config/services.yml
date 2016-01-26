@@ -1,32 +1,32 @@
 parameters:
     bigfoot.theme.bundle:                      'BigfootCoreBundle'
-    theme.class:                               'Bigfoot\\Bundle\\CoreBundle\\Theme\\Theme'
-    theme.section.toolbar:                     'Bigfoot\\Bundle\\CoreBundle\\Theme\\Section\\ToolbarSection'
-    theme.section.header:                      'Bigfoot\\Bundle\\CoreBundle\\Theme\\Section\\HeaderSection'
-    theme.section.sidebar:                     'Bigfoot\\Bundle\\CoreBundle\\Theme\\Section\\SidebarSection'
-    theme.section.page_header:                 'Bigfoot\\Bundle\\CoreBundle\\Theme\\Section\\PageHeaderSection'
-    theme.section.page_content:                'Bigfoot\\Bundle\\CoreBundle\\Theme\\Section\\PageContentSection'
-    theme.section.footer:                      'Bigfoot\\Bundle\\CoreBundle\\Theme\\Section\\FooterSection'
-    kernel_listener.class:                     'Bigfoot\\Bundle\\CoreBundle\\Listener\\KernelListener'
-    translatable_type.class:                   'Bigfoot\\Bundle\\CoreBundle\\Form\\Type\\TranslatedEntityType'
-    sortable_type.class:                       'Bigfoot\\Bundle\\CoreBundle\\Form\\Type\\SortableEntityType'
-    bigfoot.crud.formatter.loader.class:       'Bigfoot\\Bundle\\CoreBundle\\Crud\\Formatter\\Loader'
-    bigfoot.crud.formatter.date.class:         'Bigfoot\\Bundle\\CoreBundle\\Crud\\Formatter\\DateFormatter'
-    bigfoot.crud.formatter.trans.class:        'Bigfoot\\Bundle\\CoreBundle\\Crud\\Formatter\\TranslationFormatter'
-    bigfoot.core.translation.repository.class: 'Bigfoot\\Bundle\\CoreBundle\\Entity\\TranslationRepository'
-    bigfoot.form.datepicker.type.class:        'Bigfoot\\Bundle\\CoreBundle\\Form\\Type\\BigfootDatepickerType'
-    bigfoot.dashboard.class:                   'Bigfoot\\Bundle\\CoreBundle\\Controller\\DashboardController'
+    theme.class:                               'Bigfoot\Bundle\CoreBundle\Theme\Theme'
+    theme.section.toolbar:                     'Bigfoot\Bundle\CoreBundle\Theme\Section\ToolbarSection'
+    theme.section.header:                      'Bigfoot\Bundle\CoreBundle\Theme\Section\HeaderSection'
+    theme.section.sidebar:                     'Bigfoot\Bundle\CoreBundle\Theme\Section\SidebarSection'
+    theme.section.page_header:                 'Bigfoot\Bundle\CoreBundle\Theme\Section\PageHeaderSection'
+    theme.section.page_content:                'Bigfoot\Bundle\CoreBundle\Theme\Section\PageContentSection'
+    theme.section.footer:                      'Bigfoot\Bundle\CoreBundle\Theme\Section\FooterSection'
+    kernel_listener.class:                     'Bigfoot\Bundle\CoreBundle\Listener\KernelListener'
+    translatable_type.class:                   'Bigfoot\Bundle\CoreBundle\Form\Type\TranslatedEntityType'
+    sortable_type.class:                       'Bigfoot\Bundle\CoreBundle\Form\Type\SortableEntityType'
+    bigfoot.crud.formatter.loader.class:       'Bigfoot\Bundle\CoreBundle\Crud\Formatter\Loader'
+    bigfoot.crud.formatter.date.class:         'Bigfoot\Bundle\CoreBundle\Crud\Formatter\DateFormatter'
+    bigfoot.crud.formatter.trans.class:        'Bigfoot\Bundle\CoreBundle\Crud\Formatter\TranslationFormatter'
+    bigfoot.core.translation.repository.class: 'Bigfoot\Bundle\CoreBundle\Entity\TranslationRepository'
+    bigfoot.form.datepicker.type.class:        'Bigfoot\Bundle\CoreBundle\Form\Type\BigfootDatepickerType'
+    bigfoot.dashboard.class:                   'Bigfoot\Bundle\CoreBundle\Controller\DashboardController'
 services:
     # Core controller listener ; used to set page title, breadcrumbs..
     kernel.listener.bigfoot_controller_listener:
-        class: Bigfoot\Bundle\CoreBundle\Listener\ControllerListener
+        class: 'Bigfoot\Bundle\CoreBundle\Listener\ControllerListener'
         arguments: ['@bigfoot.theme']
         tags:
             - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
 
     # Kernel Listener
     bigfoot_core.kernel_listener:
-        class: Bigfoot\Bundle\CoreBundle\Listener\KernelListener
+        class: 'Bigfoot\Bundle\CoreBundle\Listener\KernelListener'
         arguments:
             - '@stof_doctrine_extensions.listener.translatable'
             - '@kernel'
@@ -36,7 +36,7 @@ services:
             - { name: kernel.event_listener, event: '@request_stack', method: onLateKernelRequest, priority: -500 }
 
     bigfoot_core.doctrine_listener:
-        class: Bigfoot\Bundle\CoreBundle\Listener\DoctrineListener
+        class: 'Bigfoot\Bundle\CoreBundle\Listener\DoctrineListener'
         tags:
             - { name: doctrine.event_listener, event: onFlush }
             - { name: doctrine.event_listener, event: postPersist }
@@ -47,7 +47,7 @@ services:
 
     # Kernel Listener
     bigfoot_core.translatable_subscriber:
-        class: Bigfoot\Bundle\CoreBundle\Form\EventListener\TranslationSubscriber
+        class: 'Bigfoot\Bundle\CoreBundle\Form\EventListener\TranslationSubscriber'
         arguments:
             - %bigfoot_core.languages.front%
             - '@doctrine'
@@ -88,8 +88,8 @@ services:
         public: false
     # Tags management
     bigfoot.form.type.bigfoot_tag:
-        class: Bigfoot\Bundle\CoreBundle\Form\Type\BigfootTagType
-        arguments: ['@doctrine.orm.entity_manager']
+        class: 'Bigfoot\Bundle\CoreBundle\Form\Type\BigfootTagType'
+        arguments: ['@doctrine.orm.default_entity_manager']
         tags:
             - { name: form.type }
     # Entity translation in forms
@@ -104,13 +104,13 @@ services:
             - { name: form.type }
     # Translatable label
     form.type.translatable_label:
-        class: Bigfoot\Bundle\CoreBundle\Form\TranslatableLabelType
-        arguments: ['@bigfoot_context', '@doctrine.orm.entity_manager', %locale%, '@bigfoot_core.manager.translatable_label', '@translator']
+        class: 'Bigfoot\Bundle\CoreBundle\Form\TranslatableLabelType'
+        arguments: ['@bigfoot_context', '@doctrine.orm.default_entity_manager', %locale%, '@bigfoot_core.manager.translatable_label', '@translator']
         tags:
             - { name: form.type }
     form.type.translatable_label_translation:
-        class: Bigfoot\Bundle\CoreBundle\Form\TranslatableLabelTranslationType
-        arguments: ['@bigfoot_context', '@doctrine.orm.entity_manager', %locale%, '@bigfoot_core.manager.translatable_label', '@translator']
+        class: 'Bigfoot\Bundle\CoreBundle\Form\TranslatableLabelTranslationType'
+        arguments: ['@bigfoot_context', '@doctrine.orm.default_entity_manager', %locale%, '@bigfoot_core.manager.translatable_label', '@translator']
         tags:
             - { name: form.type }
     # CRUD
@@ -135,12 +135,12 @@ services:
             - { name: form.type }
     # Richtext type
     form.type.bigfoot_richtext:
-        class: Bigfoot\Bundle\CoreBundle\Form\Type\BigfootRichtextType
+        class: 'Bigfoot\Bundle\CoreBundle\Form\Type\BigfootRichtextType'
         tags:
             - { name: form.type }
     # Route type
     form.type.bigfoot_route:
-        class: Bigfoot\Bundle\CoreBundle\Form\RouteType
+        class: 'Bigfoot\Bundle\CoreBundle\Form\RouteType'
         tags:
             - { name: form.type }
     # Datepicker type
@@ -152,31 +152,31 @@ services:
             - { name: form.type }
     # Collection item type - to set as parent for entity types used in collections
     bigfoot.form.type.collection_item:
-        class: Bigfoot\Bundle\CoreBundle\Form\Type\CollectionItemType
+        class: 'Bigfoot\Bundle\CoreBundle\Form\Type\CollectionItemType'
         tags:
             - { name: form.type }
 
     # Sortable Collection - to set as parent for entity types used in collections
     bigfoot.form.type.sortable_collection:
-        class: Bigfoot\Bundle\CoreBundle\Form\Type\SortableCollectionType
+        class: 'Bigfoot\Bundle\CoreBundle\Form\Type\SortableCollectionType'
         tags:
             - { name: form.type}
 
     # File type
     bigfoot.form.type.file:
-        class: Bigfoot\Bundle\CoreBundle\Form\Type\FileType
+        class: 'Bigfoot\Bundle\CoreBundle\Form\Type\FileType'
         tags:
             - { name: form.type }
 
     # Allows translations to be stored in database
     bigfoot.translation.database_loader:
-        class: Bigfoot\Bundle\CoreBundle\Translation\DatabaseLoader
-        arguments: ['@doctrine.orm.entity_manager']
+        class: 'Bigfoot\Bundle\CoreBundle\Translation\DatabaseLoader'
+        arguments: ['@doctrine.orm.default_entity_manager']
         tags:
             - { name: translation.loader, alias: db }
     # QuickLink type
     bigfoot.form.type.quicklink:
-        class: Bigfoot\Bundle\CoreBundle\Form\QuickLinkType
+        class: 'Bigfoot\Bundle\CoreBundle\Form\QuickLinkType'
         arguments: ['@request_stack', '@security.token_storage']
         scope: request_stack
         tags:
@@ -190,20 +190,20 @@ services:
             - { name: bigfoot.dashboard, alias: dashboard }
     # Twig
     bigfoot_core.twig.locale_flags_extension:
-        class: Bigfoot\Bundle\CoreBundle\Twig\LocalesFlagsExtension
+        class: 'Bigfoot\Bundle\CoreBundle\Twig\LocalesFlagsExtension'
         arguments:
             - %bigfoot_core.languages.front%
             - '@twig'
         tags:
             - { name: twig.extension }
     bigfoot_core.twig.formatter_extension:
-        class: Bigfoot\Bundle\CoreBundle\Twig\Crud\FormatterExtension
+        class: 'Bigfoot\Bundle\CoreBundle\Twig\Crud\FormatterExtension'
         arguments:
             - '@bigfoot_core.crud.formatter.loader'
         tags:
             - { name: twig.extension }
     bigfoot_core.twig.file_extension:
-        class: Bigfoot\Bundle\CoreBundle\Twig\FileExtension
+        class: 'Bigfoot\Bundle\CoreBundle\Twig\FileExtension'
         arguments:
             - '@bigfoot_core.manager.file_manager'
         tags:
@@ -211,14 +211,14 @@ services:
 
     # Token Generator
     bigfoot_core.generator.token:
-        class: Bigfoot\Bundle\CoreBundle\Generator\TokenGenerator
+        class: 'Bigfoot\Bundle\CoreBundle\Generator\TokenGenerator'
 
     # Abstract Mailer
     bigfoot_core.mailer.abstract:
-        class: Bigfoot\Bundle\CoreBundle\Mailer\AbstractMailer
+        class: 'Bigfoot\Bundle\CoreBundle\Mailer\AbstractMailer'
         abstract: true
         calls:
-            - [setManager, ['@doctrine.orm.entity_manager']]
+            - [setManager, ['@doctrine.orm.default_entity_manager']]
             - [setMailer, ['@mailer']]
             - [setTemplating, ['@templating']]
             - [setTranslator, ['@translator']]
@@ -226,24 +226,24 @@ services:
 
     # Menu Builder
     bigfoot_core.menu_builder:
-        class: Bigfoot\Bundle\CoreBundle\Menu\Builder
+        class: 'Bigfoot\Bundle\CoreBundle\Menu\Builder'
         arguments:
-            - '@doctrine.orm.entity_manager'
+            - '@doctrine.orm.default_entity_manager'
             - '@security.token_storage'
             - '@event_dispatcher'
             - '@bigfoot_core.manager.menu'
 
     # Menu Manager
     bigfoot_core.manager.menu:
-        class: Bigfoot\Bundle\CoreBundle\Menu\MenuManager
+        class: 'Bigfoot\Bundle\CoreBundle\Menu\MenuManager'
         arguments:
             - '@knp_menu.factory'
-            - '@doctrine.orm.entity_manager'
+            - '@doctrine.orm.default_entity_manager'
             - '@security.token_storage'
 
     # Menu main
     bigfoot_core.menu.main:
-        class: Knp\Menu\MenuItem
+        class: 'Knp\Menu\MenuItem'
         factory: ['@bigfoot_core.menu_builder', createMainMenu]
         scope: request_stack
         arguments:
@@ -253,7 +253,7 @@ services:
 
     # Menu test
     bigfoot_core.menu.test:
-        class: Knp\Menu\MenuItem
+        class: 'Knp\Menu\MenuItem'
         factory: ['@bigfoot_core.menu_builder', createMainMenu]
         scope: request_stack
         arguments:
@@ -263,14 +263,14 @@ services:
 
     # Menu Subscriber
     bigfoot_core.subscriber.menu:
-        class: Bigfoot\Bundle\CoreBundle\Subscriber\MenuSubscriber
+        class: 'Bigfoot\Bundle\CoreBundle\Subscriber\MenuSubscriber'
         arguments: ['@security.token_storage']
         tags:
             - { name: kernel.event_subscriber }
 
     # Knp Subscriber
     bigfoot_core.subscriber.knp:
-        class: Bigfoot\Bundle\CoreBundle\Subscriber\KnpSubscriber
+        class: 'Bigfoot\Bundle\CoreBundle\Subscriber\KnpSubscriber'
         calls:
             - [setRequestStack, ['@request_stack']]
         tags:
@@ -278,16 +278,16 @@ services:
 
     # Filter
     bigfoot_core.manager.filters:
-        class: Bigfoot\Bundle\CoreBundle\Manager\FilterManager
+        class: 'Bigfoot\Bundle\CoreBundle\Manager\FilterManager'
         scope: request_stack
         arguments:
             - '@form.factory'
-            - '@doctrine.orm.entity_manager'
+            - '@doctrine.orm.default_entity_manager'
             - '@session'
             - '@request_stack'
 
     bigfoot_core.form.type.filters:
-        class: Bigfoot\Bundle\CoreBundle\Form\Type\FilterType
+        class: 'Bigfoot\Bundle\CoreBundle\Form\Type\FilterType'
         scope: request_stack
         arguments:
             - '@bigfoot_core.manager.filters'
@@ -296,12 +296,12 @@ services:
 
     # Settings
     bigfoot_core.manager.settings:
-        class: Bigfoot\Bundle\CoreBundle\Manager\SettingsManager
+        class: 'Bigfoot\Bundle\CoreBundle\Manager\SettingsManager'
         arguments:
-            - '@doctrine.orm.entity_manager'
+            - '@doctrine.orm.default_entity_manager'
 
     bigfoot_core.form.type.settings:
-        class: Bigfoot\Bundle\CoreBundle\Form\Type\SettingsType
+        class: 'Bigfoot\Bundle\CoreBundle\Form\Type\SettingsType'
         arguments:
             - '@event_dispatcher'
         tags:
@@ -309,7 +309,7 @@ services:
 
     # Labels
     bigfoot_core.manager.translatable_label:
-        class: Bigfoot\Bundle\CoreBundle\Manager\TranslatableLabelManager
+        class: 'Bigfoot\Bundle\CoreBundle\Manager\TranslatableLabelManager'
         arguments:
             - %kernel.cache_dir%
             - '@filesystem'
@@ -318,13 +318,13 @@ services:
     bigfoot_core.translation.repository:
         class: %bigfoot.core.translation.repository.class%
         arguments:
-            - '@doctrine.orm.entity_manager'
+            - '@doctrine.orm.default_entity_manager'
             - '@annotation_reader'
             - '@property_accessor'
 
 #    Chain Router
     bigfoot_core.cmf_routing.router:
-        class: Symfony\Component\Routing\Router
+        class: 'Symfony\Component\Routing\Router'
         arguments:
             - '@logger'
         calls:
@@ -332,10 +332,10 @@ services:
 
     # Bigfoot Router
     bigfoot_core.router:
-        class: Bigfoot\Bundle\CoreBundle\Entity\RouteRepository
+        class: 'Bigfoot\Bundle\CoreBundle\Entity\RouteRepository'
         arguments:
             - 'BigfootCoreBundle:Route'
-        factory: ['@doctrine.orm.entity_manager', getRepository]
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
         tags:
             - { name: router, priority: 200 }
         calls:
@@ -343,16 +343,16 @@ services:
 
     # FileUploadManager
     bigfoot_core.manager.file_manager:
-        class: Bigfoot\Bundle\CoreBundle\Manager\FileManager
+        class: 'Bigfoot\Bundle\CoreBundle\Manager\FileManager'
         calls:
             - [setContainer,['@service_container']]
 
     bigfoot_core.translation.convert:
-        class: Bigfoot\Bundle\CoreBundle\Translation\Convert
+        class: 'Bigfoot\Bundle\CoreBundle\Translation\Convert'
         arguments: ['@kernel']
 
     # Csv
     bigfoot_core.manager.csv:
-        class: Bigfoot\Bundle\CoreBundle\Manager\CsvManager
+        class: 'Bigfoot\Bundle\CoreBundle\Manager\CsvManager'
         arguments:
-            - '@doctrine.orm.entity_manager'
+            - '@doctrine.orm.default_entity_manager'
