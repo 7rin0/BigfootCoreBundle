@@ -210,7 +210,7 @@ class BaseController extends Controller
      */
     protected function getContext()
     {
-        return $this->get('bigfoot_context');
+        return $this->get('bigfoot_context.service.context');
     }
 
     /**

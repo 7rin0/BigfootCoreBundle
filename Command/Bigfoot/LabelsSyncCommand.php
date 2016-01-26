@@ -67,7 +67,7 @@ EOT
         /** @var ProgressBar $progress */
         $progress = new ProgressBar($output, 30);
         /** @var ContextService $context */
-        $context = $this->getContainer()->get('bigfoot_context');
+        $context = $this->getContainer()->get('bigfoot_context.service.context');
         $locales = array_keys($context->getValues('language'));
 
         $files = array();

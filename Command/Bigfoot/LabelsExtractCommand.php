@@ -67,7 +67,7 @@ EOT
         $progress = new ProgressBar($output, 30);
         $transRepo = $this->getContainer()->get('bigfoot_core.translation.repository');
         /** @var ContextService $context */
-        $context = $this->getContainer()->get('bigfoot_context');
+        $context = $this->getContainer()->get('bigfoot_context.service.context');
         $locales = array_keys($context->getValues('language'));
 
         $categories = array();
