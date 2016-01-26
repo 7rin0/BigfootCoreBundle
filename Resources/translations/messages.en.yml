@@ -1,118 +1,118 @@
 bigfoot_core:
     crud:
         index:
-            error: 'Error : %error%'
+            error: "Error : %error%"
         actions:
             edit:
-                label: 'Edit'
+                label: "Edit"
             delete:
-                label: 'Delete'
-                confirm: 'Are you sure ? The %entity% will be permanently deleted.'
+                label: "Delete"
+                confirm: "Are you sure ? The %entity% will be permanently deleted."
             delete_file:
-                label: 'Delete file'
-                confirm: 'Are you sure ? The file %file% will be permanently deleted.'
+                label: "Delete file"
+                confirm: "Are you sure ? The file %file% will be permanently deleted."
             new:
-                label: 'Create'
+                label: "Create"
             duplicate:
-                label: 'Duplicate'
+                label: "Duplicate"
             csv:
-                label: 'Export in csv format'
+                label: "Export in csv format"
         delete:
-            confirm: 'The entity has beed deleted.'
+            confirm: "The entity has beed deleted."
             errors:
-                not_found: 'Unable to find %entity% entity'
+                not_found: "Unable to find %entity% entity"
         delete_file:
-            confirm: 'The file has beed deleted.'
+            confirm: "The file has beed deleted."
             errors:
-                not_found: 'Property %property% does not exist on %class%'
+                not_found: "Property %property% does not exist on %class%"
         edit:
-            title: 'Editing %entity%'
+            title: "Editing %entity%"
             errors:
-                not_found: 'Unable to find %entity% entity'
+                not_found: "Unable to find %entity% entity"
         new:
-            title: 'Add %entity%'
-        submit: 'Submit'
+            title: "Add %entity%"
+        submit: "Submit"
         controller:
-            default_title: '%entity% admin'
+            default_title: "%entity% admin"
             admin_tag_category:
                 entity:
-                    label: 'Tags category'
-                    label_plural: 'Tags categories'
+                    label: "Tags category"
+                    label_plural: "Tags categories"
             admin_tag:
                 entity:
-                    label: 'Tag'
-                    label_plural: 'Tags'
+                    label: "Tag"
+                    label_plural: "Tags"
             admin_translatable_label:
                 entity:
-                    label: 'Translatable label'
-                    label_plural: 'Translatable labels'
+                    label: "Translatable label"
+                    label_plural: "Translatable labels"
         fields:
             admin_tag_category:
                 id:
-                    label: 'ID'
+                    label: "ID"
                 name:
-                    label: 'Name'
+                    label: "Name"
             admin_tag:
                 id:
-                    label: 'ID'
+                    label: "ID"
                 name:
-                    label: 'Name'
+                    label: "Name"
             admin_translatable_label:
                 category:
-                    label: 'Category'
+                    label: "Category"
                 name:
-                    label: 'Identifier'
+                    label: "Identifier"
                 value:
-                    label: 'Translation'
+                    label: "Translation"
                 editedAt:
-                    label: 'Last edited'
+                    label: "Last edited"
 
     flash:
         actions:
             back:
-                label: 'Back to the listing'
+                label: "Back to the listing"
             new:
-                label: 'Add a new %entity%'
+                label: "Add a new %entity%"
         header:
             title:
-                success: 'Success!'
+                success: "Success!"
         new:
-            confirm: 'The %entity% has been created.'
+            confirm: "The %entity% has been created."
         edit:
-            confirm: 'The %entity% has been updated.'
+            confirm: "The %entity% has been updated."
         delete:
-            confirm: 'The %entity% has been deleted.'
+            confirm: "The %entity% has been deleted."
         delete_file:
-            confirm: 'The file has been deleted.'
+            confirm: "The file has been deleted."
         duplicate:
-            confirm: 'The %entity% has been duplicated.'
+            confirm: "The %entity% has been duplicated."
 
     menu:
         label:
-            settings: 'Global settings'
-            translations: 'Translations'
+            settings: "Global settings"
+            translations: "Translations"
 
     settings:
         form:
-            title: 'Global settings'
+            title: "Global settings"
 
     success:
-        wait: 'Success, please wait...'
+        wait: "Success, please wait..."
 
     quick_link:
         modal:
-            title: 'Add this page to the quick links'
+            title: "Add this page to the quick links"
     translatable_label:
         plural:
-            standard_0: 'Value for singular'
-            standard_1: 'Value for plural'
-            explicit: 'Value for %interval%'
+            standard_0: "Value for singular"
+            standard_1: "Value for plural"
+            explicit: "Value for %interval%"
         form:
             value:
-                label: 'Label'
+                label: "Label"
             empty_value:
-                label: 'Empty value ? (no fallback)'
+                label: "Empty value ? (no fallback)"
             category:
-                title: 'Category'
+                title: "Category"
 bigfoot_process:
-    todo: 'task to complete|tasks to complete'
+    todo: "task to complete|tasks to complete"
