@@ -137,7 +137,7 @@ class QuickLinkController extends CrudController
         $entity  = new QuickLink();
         $form = $this->get('form.factory')->create($this->getFormType(), $entity);
         $requestStack = $this->getRequestStack();
-        $form->submit($requestStack);
+        $form->submit($requestStack->request->get($form->getName()));
 
         if ($form->isValid()) {
             $em = $this->get('doctrine')->getManager();

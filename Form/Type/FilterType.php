@@ -47,8 +47,8 @@ class FilterType extends AbstractType
         foreach ($filters as $filter) {
             $options = isset($filter['options']) ? $filter['options'] : array();
             $value   = isset($datas[$filter['name']]) ? $datas[$filter['name']] : null;
-
-            if ($filter['type'] == ChoiceType::class || $filter['type'] == 'repositoryMethod' || ($filter['type'] == 'referer' && $options['type'] == ChoiceType::class)) {
+            dump($filter['type']);
+            if ($filter['type'] == 'choice' || $filter['type'] == 'repositoryMethod' || ($filter['type'] == 'referer' && $options['type'] == 'choice')) {
                 $builder->add(
                     $filter['name'],
                     ChoiceType::class,
@@ -60,8 +60,6 @@ class FilterType extends AbstractType
                     )
                 );
             }
-
-            dump('teste received types'); die();
 
             if ($filter['type'] == 'entity') {
                 if (!empty($value)) {
@@ -82,7 +80,7 @@ class FilterType extends AbstractType
                 );
             }
 
-            if (($filter['type'] == 'referer' && $options['type'] == TextType::class) || $filter['type'] == 'search') {
+            if (($filter['type'] == 'referer' && $options['type'] == 'text') || $filter['type'] == 'search') {
                 $builder->add(
                     $filter['name'],
                     TextType::class,

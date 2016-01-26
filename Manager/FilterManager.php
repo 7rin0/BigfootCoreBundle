@@ -10,7 +10,6 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -108,7 +107,7 @@ class FilterManager
     public function registerFilters($entityName, $globalFilters)
     {
         $form = $this->generateFilters($globalFilters, $entityName);
-        $form->submit($this->requestStack);
+        $form->submit($this->requestStack->request->get($form->getName()));
 
         $datas   = $form->getData();
         $filters = $globalFilters['fields'];
@@ -157,6 +156,8 @@ class FilterManager
                     $options = $filter['options'];
                     $data = $datas[$filter['name']];
 
+                    dump($filter['type']);
+
                     switch ($filter['type']) {
                         case 'repositoryMethod':
                             $em = $this->entityManager;
@@ -173,7 +174,7 @@ class FilterManager
                                 $this->addJoin('e.'.$options['relation'], '_r'.$key, 'WITH _r'.$key.'.id = '.$data->getId());
                             }
                             break;
-                        case ChoiceType::class:
+                        case 'choice':
                             $this->addWhere($options['property'], $data);
                             break;
                         case 'referer':
@@ -213,6 +214,7 @@ class FilterManager
                     }
                 }
             }
+            die();
         }
 
         return $this->hydrateQuery($query);
