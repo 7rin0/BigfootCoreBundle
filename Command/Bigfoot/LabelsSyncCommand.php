@@ -81,7 +81,7 @@ EOT
         $processedLabels = array();
         foreach ($files as $file) {
             $fileName = pathinfo($file, PATHINFO_FILENAME);
-            $content = Yaml::parse($file);
+            $content = Yaml::parse(file_get_contents($file));
 
             if ($content) {
                 $nbTranslations = count($content);

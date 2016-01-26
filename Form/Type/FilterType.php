@@ -61,6 +61,8 @@ class FilterType extends AbstractType
                 );
             }
 
+            dump('teste received types'); die();
+
             if ($filter['type'] == 'entity') {
                 if (!empty($value)) {
                     $value = $this->manager->getEntity($filter, $value);
