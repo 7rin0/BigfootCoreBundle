@@ -19,7 +19,7 @@ class SetRouterPass implements CompilerPassInterface
     {
         if ($container->hasParameter('bigfoot_core.routing.replace_symfony_router') && true === $container->getParameter('bigfoot_core.routing.replace_symfony_router')) {
             if ($container->hasParameter('bigfoot_core.routing.routers_by_id')) {
-                $container->setAlias('router', 'bigfoot_core.cmf_routing.router');
+                $container->setAlias('router.default', 'bigfoot_core.cmf_routing.router');
             }
         }
     }

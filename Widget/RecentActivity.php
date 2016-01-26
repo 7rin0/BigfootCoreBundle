@@ -56,7 +56,7 @@ class RecentActivity extends AbstractWidget
 
                     // Create edit link if controller declared for entity
                     if (isset($tab['controller']) && class_exists($tab['controller'])) {
-                        $timelineItem['edit_link'] = $this->container->get('router')->generate($objectController->getRouteNameForAction('edit'), array('id' => $entity->getId()));
+                        $timelineItem['edit_link'] = $this->container->get('router.default')->generate($objectController->getRouteNameForAction('edit'), array('id' => $entity->getId()));
                     }
 
                     $updatedDay = $entity->getUpdated()->format('Y-m-d');

@@ -948,7 +948,7 @@ abstract class CrudController extends BaseController
      */
     protected function generateEnvUrl($env, $route, array $parameters = array(), $envAutoSuffix = true)
     {
-        $requestContext = $this->get('router')->getContext();
+        $requestContext = $this->get('router.default')->getContext();
         $oldBaseUrl = $requestContext->getBaseUrl();
         $baseUrl = '/' . $env;
         if ($envAutoSuffix) {

@@ -172,7 +172,7 @@ class BaseController extends Controller
      */
     protected function getRouter()
     {
-        return $this->get('router');
+        return $this->get('router.default');
     }
 
     /**
