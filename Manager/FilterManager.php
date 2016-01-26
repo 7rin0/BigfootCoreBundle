@@ -107,7 +107,7 @@ class FilterManager
     public function registerFilters($entityName, $globalFilters)
     {
         $form = $this->generateFilters($globalFilters, $entityName);
-        $form->submit($this->requestStack->request->get($form->getName()));
+        $form->handleRequest($this->requestStack);
 
         $datas   = $form->getData();
         $filters = $globalFilters['fields'];
