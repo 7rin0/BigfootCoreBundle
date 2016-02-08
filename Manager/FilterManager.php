@@ -156,8 +156,6 @@ class FilterManager
                     $options = $filter['options'];
                     $data = $datas[$filter['name']];
 
-                    dump($filter['type']);
-
                     switch ($filter['type']) {
                         case 'repositoryMethod':
                             $em = $this->entityManager;

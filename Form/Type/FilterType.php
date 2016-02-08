@@ -47,7 +47,7 @@ class FilterType extends AbstractType
         foreach ($filters as $filter) {
             $options = isset($filter['options']) ? $filter['options'] : array();
             $value   = isset($datas[$filter['name']]) ? $datas[$filter['name']] : null;
-            dump($filter['type']);
+
             if ($filter['type'] == 'choice' || $filter['type'] == 'repositoryMethod' || ($filter['type'] == 'referer' && $options['type'] == 'choice')) {
                 $builder->add(
                     $filter['name'],
